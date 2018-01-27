@@ -12,6 +12,9 @@ app.config(function($routeProvider) {
     .when("/blog/psyche", {
       templateUrl: "templates/psychetech.html"
     })
+    .when("/blog/psique", {
+      templateUrl: "templates/psique.html"
+    })
     .otherwise({
       redirectTo: "/"
     });
