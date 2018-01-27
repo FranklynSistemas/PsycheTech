@@ -10,7 +10,7 @@ require('./models/pages');
 var routes = require('./routes/routes');
 
 // Conexión con la base de datos
-mongoose.connect('mongodb:///psychetech',
+mongoose.connect('mongodb://104.197.252.243:80/psychetech',
   function(err, res) {
     if(err) throw err;
     console.log('Conectado con exito a la BD');
