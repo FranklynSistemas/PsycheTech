@@ -70,6 +70,10 @@
     margin: 0 auto !important;;
 }
 
+.swal2-popup .swal2-styled {
+	line-height: 3em !important;
+}
+
 /*        */
 
 
