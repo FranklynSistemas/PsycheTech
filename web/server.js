@@ -5,12 +5,10 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 
-require('./models/users');
-require('./models/pages');
 var routes = require('./routes/routes');
 
 // Conexión con la base de datos
-mongoose.connect('mongodb:///psychetech',
+mongoose.connect('mongodb://35.229.107.224:80/psychetech',
   function(err, res) {
     if(err) throw err;
     console.log('Conectado con exito a la BD');

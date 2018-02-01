@@ -7,7 +7,7 @@ var ContactsSchema = new Schema({
     },
     createAt: {
         type:Date,
-        default: Date.now
+        default: Date.now()
     },
     email: {
         type: String
