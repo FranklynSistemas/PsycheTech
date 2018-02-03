@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var QualificationsSchema = new Schema({
+const QualificationsSchema = new Schema({
   createAt: {
     type: Date,
     default: Date.now()
@@ -24,4 +24,4 @@ var QualificationsSchema = new Schema({
   }
 });
 
-var Qualifications = mongoose.model('qualifications', QualificationsSchema);
+const Qualifications = mongoose.model('qualifications', QualificationsSchema);

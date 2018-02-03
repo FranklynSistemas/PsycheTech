@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var ContactsSchema = new Schema({
+const ContactsSchema = new Schema({
     name:{
         type: String
     },
@@ -17,4 +17,4 @@ var ContactsSchema = new Schema({
     }
 });
 
-var contacts = mongoose.model('contacts', ContactsSchema);
+const contacts = mongoose.model('contacts', ContactsSchema);

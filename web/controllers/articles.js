@@ -6,16 +6,37 @@ const Qualifications = mongoose.model('qualifications')
 
 
 const createQualification = async() => {
-  const initQuali = {
-    comments: [],
-    likes: 0
+
+  try {
+    
+    const initQuali = {
+      comments: [],
+      likes: 0
+    }
+
+    return new Qualifications(initQuali).save()
+  } catch (error) {
+    console.log("Error created ", error)
   }
 
-  return new Qualifications(initQuali).save()
 }
 
+/* Create
+
+{
+	"name": "the first article",
+	"content": "<p>This can html, doesn't have any problem</p>",
+	"shortView": {
+		"title": "The origin of Psicology",
+		"content": "The abstract"
+	},
+	"bost": 1
+}
+
+ */
+
 exports.createArticle = async(req, res, next) => {
-  
+
   try {
     const qualifications = await createQualification();
     let newArticle = req.body
@@ -30,29 +51,64 @@ exports.createArticle = async(req, res, next) => {
     })
 
 
-  } catch (e) {
+  } catch (error) {
     res.send(500).json({
       status: false,
       info: "error create a new article",
-      error: e
+      error: error
     })
   }
 }
 
 
-exports.getAllArticles = async(req, res, next) => {
-  
-  try {
+exports.getArticles = async(req, res, next) => {
 
-    const articles = await Articles.find()
-    	.populate('qualification')
+  try {
+    const query = req.query;
+    const articles = await Articles.find(query)
+      .populate('qualification')
 
     res.json({
       status: true,
       articles: articles
     })
 
-  } catch (e) {
+  } catch (error) {
+    res.send(500).json({
+      status: false,
+      info: "error and get articles",
+      error: error
+    })
+  }
+}
+
+/* Update
+
+{
+    query: {
+      name: "Andy"
+    },
+    sort: { rating: 1 },
+    update: { $inc: { score: 1 } },
+    upsert: true
+}
+
+*/
+
+
+exports.editArticles = async(req, res, next) => {
+
+  try {
+    const body = req.body;
+    const articles = await Articles.findAndModify(body)
+      .populate('qualification')
+
+    res.json({
+      status: true,
+      articles: articles
+    })
+
+  } catch (error) {
     res.send(500).json({
       status: false,
       info: "error create a new article",

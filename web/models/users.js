@@ -1,8 +1,11 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
+const UserSchema = new Schema({
     name:{
+        type: String
+    },
+    photo: {
         type: String
     },
     createAt: {
@@ -11,10 +14,7 @@ var UserSchema = new Schema({
     },
     email: {
         type: String
-    },
-    password: {
-        type: String
     }
 });
 
-var User = mongoose.model('user', UserSchema);
+const User = mongoose.model('users', UserSchema);

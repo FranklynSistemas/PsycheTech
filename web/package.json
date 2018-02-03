@@ -1,15 +1,19 @@
 {
-	"name": "PsycheTech",
-	"version": "0.0.1",
-	"description": "PsycheTech based in MEAN stack",
-	"main": "server.js",
-	"dependencies": {
-		"body-parser": "^1.18.2",
-		"express": "^4.13.3",
-		"method-override": "^2.3.10",
-		"mongoose": "^4.4.6"
-	},
-	"scripts": {
-		"start": "node server.js"
-	}
+  "name": "PsycheTech",
+  "version": "0.0.1",
+  "description": "PsycheTech based in MEAN stack",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "crypto": "^1.0.1",
+    "express": "^4.13.3",
+    "express-session": "^1.15.6",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.4.6",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
 }

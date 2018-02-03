@@ -2,11 +2,24 @@ const mongoose = require('mongoose')
 require('../models/contacts')
 const Contacts = mongoose.model('contacts')
 
-exports.createContact = function(req, res, next) {
+exports.createContact = async(req, res, next) => {
 
-  new Contacts(req.body).save(function(err) {
-  	if (err) throw err;
-  	res.json({status:true, info: 'contact create success'})
-  })
+  try {
+
+    const contact = await new Contacts(req.body)
+      .save()
+
+    res.json({
+      status: true,
+      info: 'contact create success'
+    })
+
+
+  } catch (error) {
+    res.json({
+      status: false,
+      info: 'error created contact'
+    })
+  }
 
 }
