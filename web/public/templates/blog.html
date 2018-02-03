@@ -5,23 +5,9 @@
             <!-- Content -->
             <div id="content">
                 <div class="row">
-                    <div class="6u 12u(mobile)">
-                        <section style="text-align: center;">
-                            <h2 class="orange">ORIGEN MITOLÓGICO DE LA PSIQUE O EL "ALMA"</h2>
-                            <br>
-                            <img class="imgBlogs" src="images/imagesBlog1/b01.jpg">
-                            <p align="justify">Descubré el origen mitológico del alma, Todo inicio gracias a un escritor Romano de nombre Apuleyo, el cuál creo un mito sobre una hermosa chica ...</p>
-                            <a href="#/blog/psyche" class="button style1">Leer Más</a>
-                        </section>
-                    </div>
-                    <div class="6u 12u(mobile)">
-                        <section style="text-align: center;">
-                            <h2 class="orange">DISTINTOS ORIGENES DEL ESTUDÍO DE LA PSICOLOGÍA</h2>
-                            <br>
-                            <img class="imgBlogs" src="images/imagesBlog2/1.jpg">
-                            <p align="justify">¿Sabías que el nombre "Psicología" no es lo que parece?, En Grecia el significado de la Psique se dío al aire frío o última exhalación que cada ser humano tiene al momento de morir ...</p>
-                            <a href="#/blog/psique" class="button style1">Leer Más</a>
-                        </section>
+                    <div class="6u 12u(mobile)" ng-repeat="article in articles">
+                        <div compile="article.shortView.content"></div>
+                        <div style="text-align: center;"><a href="#/blogs/{{article.name}}" class="button style1">Leer Más</a></div>
                     </div>
                 </div>
             </div>

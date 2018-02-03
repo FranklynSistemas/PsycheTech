@@ -7,13 +7,12 @@ app.config(function($routeProvider) {
       templateUrl: "templates/home.html"
     })
     .when("/blog", {
-      templateUrl: "templates/blog.html"
+      templateUrl: "templates/blog.html",
+      controller: "blogCtrl"
     })
-    .when("/blog/psyche", {
-      templateUrl: "templates/psychetech.html"
-    })
-    .when("/blog/psique", {
-      templateUrl: "templates/psique.html"
+    .when("/blogs/:name", {
+      templateUrl: "templates/blogs.html",
+      controller: "blogsCtrl"
     })
     .otherwise({
       redirectTo: "/"

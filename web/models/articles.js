@@ -26,6 +26,9 @@ const ArticlesSchema = new Schema({
     qualification: {
         type: Schema.Types.ObjectId,
         ref: 'qualifications'
+    },
+    categorie: {
+        type: String
     }
 });
 

@@ -8,7 +8,7 @@ const Qualifications = mongoose.model('qualifications')
 const createQualification = async() => {
 
   try {
-    
+
     const initQuali = {
       comments: [],
       likes: 0
@@ -30,7 +30,8 @@ const createQualification = async() => {
 		"title": "The origin of Psicology",
 		"content": "The abstract"
 	},
-	"bost": 1
+	"bost": 1,
+  "categorie": "blog"
 }
 
  */
@@ -50,7 +51,6 @@ exports.createArticle = async(req, res, next) => {
       article: article
     })
 
-
   } catch (error) {
     res.send(500).json({
       status: false,
@@ -62,10 +62,12 @@ exports.createArticle = async(req, res, next) => {
 
 
 exports.getArticles = async(req, res, next) => {
-
+  let query = req.query;
+  
   try {
-    const query = req.query;
+    
     const articles = await Articles.find(query)
+      .sort({ bost: 1})
       .populate('qualification')
 
     res.json({
