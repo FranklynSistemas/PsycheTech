@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<!--
+    Escape Velocity by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html ng-app="PsycheTech">
+
+<head>
+    <title>PsychéTech</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Psycología y Tecnología lo que no sabías">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="PsycheTéch">
+    <meta property="og:description" content="Psycología y Tecnología lo que no sabías">
+    <meta property="og:image" content="http://psychetech.co/images/icon.png">
+    <meta property="og:url" content="http://psychetech.co">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@Psyche_Tech_" />
+    <!--[if lte IE 8]><script src="admin/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="admin/css/main.css" />
+    <!-- utils css -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.6.3/sweetalert2.min.css">
+    <!--[if lte IE 8]><link rel="stylesheet" href="admin/css/ie8.css" /><![endif]-->
+    <link rel="shortcut icon" href="images/icon.png" type="image/x-icon">
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113311173-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113311173-1');
+    </script>
+</head>
+
+<body class="homepage">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <div id="header-wrapper" class="wrapper" style="height: 12em;">
+            <div id="header">
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li class="current"><a href="#/">Home</a></li>
+                        <li>
+                            <a href="#/blog">Create Blog</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- Body -->
+        <div ng-view></div>
+      
+    </div>
+</body>
+<!-- scripts -->
+<script src="admin/js/jquery.min.js"></script>
+<script src="admin/js/jquery.dropotron.min.js"></script>
+<script src="admin/js/skel.min.js"></script>
+<script src="admin/js/skel-viewport.min.js"></script>
+<script src="admin/js/util.js"></script>
+<!--[if lte IE 8]><script src="admin/js/ie/respond.min.js"></script><![endif]-->
+<script src="admin/js/main.js"></script>
+<!-- utils -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.6.3/sweetalert2.all.min.js"></script>
+<!-- Angular -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+<script src="admin/js/app.js"></script>
+<script src="admin/js/controllers/root.js"></script>
+<script src="admin/js/controllers/blogCtrl.js"></script>
+<script src="admin/js/controllers/blogsCtrl.js"></script>
+<script src="admin/js/directives/compile.js"></script>
+
+</html>
