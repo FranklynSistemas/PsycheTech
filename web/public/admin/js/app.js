@@ -4,17 +4,18 @@ app.config(function($routeProvider) {
 
   $routeProvider
     .when("/", {
-      templateUrl: "admin/templates/home.html"
+      templateUrl: "admin/templates/home.html",
+      controller: "rootController"
     })
     .when("/blog", {
-      templateUrl: "templates/blog.html",
-      controller: "blogCtrl"
-    })
-    .when("/blogs/:name", {
-      templateUrl: "templates/blogs.html",
+      templateUrl: "admin/templates/blogs.html",
       controller: "blogsCtrl"
+    })
+    .when("/blog/:id", {
+      templateUrl: "admin/templates/blog.html",
+      controller: "blogCtrl"
     })
     .otherwise({
       redirectTo: "/"
     });
-})
+});

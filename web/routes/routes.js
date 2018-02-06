@@ -16,6 +16,8 @@ function authenticationMiddleware() {
 }
 
 router.post('/createContact', contacts.createContact)
+router.get('/getContacts', contacts.getContacts)
+
 
 // Routes Articles
 router.post('/createArticle', articles.createArticle)
@@ -34,7 +36,8 @@ router.get('/administrator', (req, res, next) => {
   if (req.isAuthenticated()) {
     return res.sendFile(path.resolve('./public/administrator.html'))
   }
-  res.redirect('/administrator/login')
+  res.sendFile(path.resolve('./public/administrator.html'))
+  //res.redirect('/administrator/login')
 })
 
 // Angular Manejará el Frontend

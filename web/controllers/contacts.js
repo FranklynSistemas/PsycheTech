@@ -23,3 +23,20 @@ exports.createContact = async(req, res, next) => {
   }
 
 }
+
+exports.getContacts = async(req, res, next) => {
+  try {
+    const contacts = await Contacts.find()
+
+    res.json({
+      status: true,
+      contacts: contacts,
+      info: 'without errors'
+    })
+  } catch (err) {
+    res.json({
+      status: false,
+      info: 'error get contacts'
+    })
+  }
+}

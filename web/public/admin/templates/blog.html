@@ -1,0 +1,62 @@
+<!-- Intro -->
+<div id="intro-wrapper" class="wrapper style3">
+    <div class="title">Admin</div>
+    <section id="intro" class="container">
+        <h2>Modo Edición</h2>
+        <p class="style1"> {{article.name}}</p>
+        <form>
+            <div class="form-group">
+                <label>Nombre</label>
+                <input ng-model="article.name" type="text" class="form-control" aria-describedby="name" placeholder="Nombre">
+                <small class="form-text text-muted">El nombre que se muestra en la url de los blogs</small>
+            </div>
+            <div class="form-group">
+                <label>Bost</label>
+                <input ng-model="article.bost" type="number" class="form-control" placeholder="Bost">
+                <small class="form-text text-muted">Clasificación entre los blogs</small>
+            </div>
+            <div class="form-group">
+                <label>Contenido</label>
+                <textarea ng-model="article.content" class="form-control" rows="10"></textarea>
+                <small class="form-text text-muted">Contenido principal del blog en HTML</small>
+            </div>
+            <h2>Abstract</h2>
+            <div class="form-group">
+                <label>Titulo</label>
+                <input ng-model="article.shortView.title" type="text" class="form-control" aria-describedby="name" placeholder="Titulo">
+                <small class="form-text text-muted">Titulo del blog</small>
+            </div>
+            <div class="form-group">
+                <label>Contenido</label>
+                <textarea ng-model="article.shortView.content" class="form-control" rows="5"></textarea>
+                <small class="form-text text-muted">Contenido del abstract en HTML</small>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </section>
+</div>
+<div class="wrapper style2">
+    <div class="container">
+        <div class="row">
+            <div class="12u 12u(mobile)">
+                <h1 align="center">Preview abstract</h1>
+            </div>
+            <div class="6u 12u(mobile)">
+                <div compile="article.shortView.content"></div>
+            </div>
+        </div>
+        <hr>
+        <br>
+        <hr>
+        <div class="row">
+            <div class="12u 12u(mobile)">
+                <h1 align="center">Preview Blog</h1>
+            </div>
+            <div class="8u 12u(mobile) important(mobile)">
+                <div id="content" style="padding-right: 40px; padding-left: 40px;">
+                    <div compile="article.content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

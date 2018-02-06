@@ -3,8 +3,29 @@
     <div class="title">Admin</div>
     <section id="intro" class="container">
         <p class="style2">
-            Este es el Administrador de,
+            Administrador de,
             <br class="mobile-hide" /> PsychéTech
         </p>
+        <p class="style1"> Nuestros Contactos</p>
+        <table class="table table-responsive table-bordered">
+            <thead class="thead-inverse">
+                <tr class="bg-success">
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Mensaje</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-active" ng-repeat="contact in contacts">
+                    <td>{{$index + 1}}</td>
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>{{contact.message}}</td>
+                    <td>{{contact.createAt | date : "fullDate"}}</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 </div>

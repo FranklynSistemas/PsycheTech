@@ -1,0 +1,31 @@
+<!-- Intro -->
+<div id="intro-wrapper" class="wrapper style3">
+    <div class="title">Admin</div>
+    <section id="intro" class="container">
+        <p class="style1"> Nuestros Blogs</p>
+        <table class="table table-bordered">
+            <thead class="thead">
+                <tr class="table-danger">
+                    <th>#</th>
+                    <th>Bost</th>
+                    <th>Nombre</th>
+                    <th>Likes</th>
+                    <th>Comentarios</th>
+                    <th>Fecha</th>
+                    <th> / </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-success" ng-repeat="article in articles">
+                    <td>{{$index + 1}}</td>
+                    <td>{{article.bost}}</td>
+                    <td>{{article.name}}</td>
+                    <td>{{article.qualification.likes}}</td>
+                    <td>{{article.qualification.comments.length}}</td>
+                    <td>{{article.createAt | date : "fullDate"}}</td>
+                    <td><a class="icon fa-edit" href="#/blog/{{article._id}}"></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>

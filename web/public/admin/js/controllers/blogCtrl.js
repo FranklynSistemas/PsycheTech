@@ -1,17 +1,34 @@
-app.controller('blogCtrl', function($scope, $http) {
+app.controller('blogCtrl', function($scope, $routeParams, $http) {
 
-  var url = '/getArticles?categorie=blog';
-  $scope.articles = [];
+  var articleId = $routeParams.id;
+  var url = '/getArticles?_id=' + articleId;
+  $scope.article = {};
+  $scope.status = {
+    response: false,
+    err: false
+  };
 
-  $http.get(url)
-    .then(function(result) {
-      console.log(result)
-      if (result.data.status) {
-        $scope.articles = result.data.articles;
-      }
+  function init() {
 
-    }, function(err) {
+    getArticle();
 
-    })
+  }
+
+  function getArticle() {
+
+    $http.get(url)
+      .then(function(result) {
+        if (result.data.status) {
+          $scope.article = result.data.articles[0];
+          $scope.status.response = true;
+          getArticles();
+        }
+      }, function(err) {
+        $scope.status.response = true;
+        $scope.status.err = true;
+      });
+  }
+
+  init();
 
 });
