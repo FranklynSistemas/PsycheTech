@@ -21,7 +21,6 @@ app.controller('blogCtrl', function($scope, $routeParams, $http) {
         if (result.data.status) {
           $scope.article = result.data.articles[0];
           $scope.status.response = true;
-          getArticles();
         }
       }, function(err) {
         $scope.status.response = true;
