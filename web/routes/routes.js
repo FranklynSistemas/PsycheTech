@@ -22,6 +22,8 @@ router.get('/getContacts', contacts.getContacts)
 // Routes Articles
 router.post('/createArticle', articles.createArticle)
 router.get('/getArticles', articles.getArticles)
+router.put('/updateArticle', articles.editArticles)
+
 
 
 // Admin
@@ -32,12 +34,8 @@ router.get('/administrator/login', (req, res) => {
   res.sendFile(path.resolve('./public/login.html'))
 })
 
-router.get('/administrator', (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return res.sendFile(path.resolve('./public/administrator.html'))
-  }
+router.get('/administrator', authenticationMiddleware(), (req, res, next) => {
   res.sendFile(path.resolve('./public/administrator.html'))
-  //res.redirect('/administrator/login')
 })
 
 // Angular Manejará el Frontend

@@ -63,11 +63,13 @@ exports.createArticle = async(req, res, next) => {
 
 exports.getArticles = async(req, res, next) => {
   let query = req.query;
-  
+
   try {
-    
+
     const articles = await Articles.find(query)
-      .sort({ bost: 1})
+      .sort({
+        bost: 1
+      })
       .populate('qualification')
 
     res.json({
@@ -101,20 +103,25 @@ exports.getArticles = async(req, res, next) => {
 exports.editArticles = async(req, res, next) => {
 
   try {
-    const body = req.body;
-    const articles = await Articles.findAndModify(body)
-      .populate('qualification')
+    const query = {
+      _id: req.body._id
+    }
+    let update = req.body
+    delete update._id
+    const articles = await Articles.findByIdAndUpdate(query, update, {
+      new: true
+    }).populate('qualification')
 
     res.json({
       status: true,
-      articles: articles
+      article: articles
     })
 
   } catch (error) {
-    res.send(500).json({
+    res.json({
       status: false,
       info: "error create a new article",
-      error: e
+      error: error
     })
   }
 }

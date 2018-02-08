@@ -7,7 +7,7 @@ app.config(function($routeProvider) {
       templateUrl: "admin/templates/home.html",
       controller: "rootController"
     })
-    .when("/blog", {
+    .when("/blogs", {
       templateUrl: "admin/templates/blogs.html",
       controller: "blogsCtrl"
     })
