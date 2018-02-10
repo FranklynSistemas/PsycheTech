@@ -34,6 +34,29 @@
 
     gtag('config', 'UA-113311173-1');
     </script>
+    <!-- Facebook -->
+    <script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '293935774467795',
+            cookie: true,
+            xfbml: true,
+            version: 'v2.12'
+        });
+
+        FB.AppEvents.logPageView();
+
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
 </head>
 
 <body class="homepage">
@@ -116,20 +139,10 @@
                                     </section>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="12u 12u(mobile)">
-                                    <section>
-                                        <h3 class="icon fa-envelope">Email</h3>
-                                        <p>
-                                            <a href="#">info@psyche-tech.com</a>
-                                        </p>
-                                    </section>
-                                </div>
-                            </div>
                         </section>
                     </div>
                 </div>
-                <hr />
+                <hr/>
             </div>
             <div id="copyright">
                 <ul>
