@@ -5,6 +5,7 @@ const path = require('path')
 const admins = require('../controllers/admins')
 const contacts = require('../controllers/contacts')
 const articles = require('../controllers/articles')
+const qualifications = require('../controllers/qualifications')
 
 function authenticationMiddleware() {
   return function(req, res, next) {
@@ -24,6 +25,9 @@ router.post('/createArticle', articles.createArticle)
 router.get('/getArticles', articles.getArticles)
 router.put('/updateArticle', articles.editArticles)
 
+
+// Routes Qualifications
+router.put('/updateQualification', qualifications.editQualifications)
 
 
 // Admin

@@ -218,6 +218,14 @@ body {
     margin: 0 auto;
 }
 
+.btnSend {
+    text-align: center;
+}
+
+#commentArea {
+    padding-left: 100px;
+    padding-right: 50px
+}
 
 /*        */
 

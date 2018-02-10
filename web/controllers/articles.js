@@ -1,8 +1,5 @@
-const mongoose = require('mongoose')
-require('../models/articles')
-require('../models/qualifications')
-const Articles = mongoose.model('articles')
-const Qualifications = mongoose.model('qualifications')
+const Articles = require('../models/articles')
+const Qualifications = require('../models/qualifications')
 
 
 const createQualification = async() => {
@@ -78,6 +75,7 @@ exports.getArticles = async(req, res, next) => {
     })
 
   } catch (error) {
+    console.log(error)
     res.send(500).json({
       status: false,
       info: "error and get articles",

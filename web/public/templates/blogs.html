@@ -29,10 +29,14 @@
                     <div class="fb-login-button" data-width="300px" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
                 </div>
             </div>
-            <div class="12u">
+            <div id="commentArea" class="12u">
                 <form>
-                    <textarea  name="message" ng-model="qualification.comment" id="contact-message" placeholder="Déjanos saber tu opinión" rows="4" ng-disabled="isAuth" required></textarea>
+                    <textarea  name="message" ng-model="quali.comment" id="contact-message" placeholder="Déjanos saber tu opinión" rows="4"  required></textarea>
                 </form>
+                <div class="btnSend"><button class="button style1" ng-click="sendComment()">Enviar</button></div>
+            </div>
+            <div class="12u">
+                <h1 class="style1" align="center"> Comentarios </h1>
             </div>
         </div> 
     </div>

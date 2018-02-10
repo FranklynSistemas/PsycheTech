@@ -24,4 +24,6 @@ const QualificationsSchema = new Schema({
   }
 });
 
-const Qualifications = mongoose.model('qualifications', QualificationsSchema);
+let Qualifications = mongoose.model('qualifications', QualificationsSchema);
+
+module.exports = Qualifications
