@@ -27,6 +27,8 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
       .then(function(result) {
         if (result.data.status) {
           $scope.article = result.data.articles[0];
+          $scope.comments = $scope.article.qualification.comments;
+          console.log("$scope.comments", $scope.comments)
           $scope.status.response = true;
           getArticles();
         }
@@ -96,6 +98,15 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
       info.msg,
       info.status
     );
+  }
+
+  $scope.checkLoginState =  function() {
+    FB.getLoginStatus(function(response) {
+      console.log('response', response)
+      if(response.status === 'connected') {
+        $rootScope.isAuth = true;
+      }
+    });
   }
 
   $window.on('load', function() {

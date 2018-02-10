@@ -1,15 +1,10 @@
 <div class="wrapper style2">
     <div class="title">Blog</div>
-    <div id="main" class="container">
-        <div class="10u 12u(mobile) important(mobile)" style="margin: 0 auto;">
-            <!-- Content -->
-            <div id="content">
-                <div class="row">
-                    <div class="6u 12u(mobile)" ng-repeat="article in articles">
-                        <div compile="article.shortView.content"></div>
-                        <div style="text-align: center;"><a href="#/blogs/{{article.name}}" class="button style1">Leer Más</a></div>
-                    </div>
-                </div>
+    <div id="highlights" class="container">
+        <div class="row row 150%">
+            <div class="4u 12u(mobile)" ng-repeat="article in articles">
+                <div compile="article.shortView.content"></div>
+                <div style="text-align: center;"><a href="#/blogs/{{article.name}}" class="button style1">Leer Más</a></div>
             </div>
         </div>
     </div>

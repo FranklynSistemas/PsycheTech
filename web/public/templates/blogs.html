@@ -1,7 +1,7 @@
 <div class="wrapper style2">
     <div class="title">PsychéTech</div>
     <div id="main" class="container">
-        <div class="row">
+        <div class="row 150%">
             <div class="8u 12u(mobile) important(mobile)">
                 <!-- Content -->
                 <div id="content" style="padding-right: 40px; padding-left: 40px;">
@@ -13,31 +13,54 @@
                 </div>
             </div>
             <div class="4u 12u(mobile) important(mobile)">
-                <h2 align="center" style="color: #f27474">Tal vez también te pueda interesar</h2>
-                <div ng-repeat="article in articles">
-                    <div compile="article.shortView.content"></div>
-                    <div style="text-align: center;"><a href="#/blogs/{{article.name}}" class="button style1">Leer Más</a></div>
-                    <br>
+                <header>
+                    <h2 align="center" style="color: #f27474">Tal vez también te pueda interesar</h2>
+                </header>
+                <div id="sidebar">
+                    <div ng-repeat="article in articles">
+                        <div compile="article.shortView.content"></div>
+                        <div style="text-align: center;"><a href="#/blogs/{{article.name}}" class="button style1">Leer Más</a></div>
+                        <br>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="12u">
-                <h1 class="style1" align="center"> Dejanos tu comentario </h1>
-                <div id="spinner">
-                    Cargando..
-                    <div class="fb-login-button" data-width="300px" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+    </div>
+</div>
+<div class="wrapper style3">
+    <div class="title">Comentarios</div>
+    <div class="row">
+        <div class="12u">
+            <h1 class="style1" align="center"> Dejanos tu comentario </h1>
+            <div id="spinner">
+                Cargando..
+                <div class="fb-login-button" data-scope="public_profile,email" onlogin="checkLoginState();" data-width="300px" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+            </div>
+        </div>
+        <div id="commentArea" class="12u">
+            <div class="row">
+                <div class="8u" style="margin: 0 auto; float: none;">
+                    <form>
+                        <textarea style="background: white;" name="message" ng-model="quali.comment" id="contact-message" placeholder="Déjanos saber tu opinión" rows="4" required></textarea>
+                    </form>
                 </div>
             </div>
-            <div id="commentArea" class="12u">
-                <form>
-                    <textarea  name="message" ng-model="quali.comment" id="contact-message" placeholder="Déjanos saber tu opinión" rows="4"  required></textarea>
-                </form>
-                <div class="btnSend"><button class="button style1" ng-click="sendComment()">Enviar</button></div>
+        </div>
+        <div class="12u btnSend" style="margin-bottom: 40px;">
+            <button class="button style1" ng-click="sendComment()">Enviar</button>
+        </div>
+        <div class="8u" style="float: none;margin: 0 auto;">
+            <header class="style1">
+                <h2>Comentarios</h2>
+            </header>
+            <div ng-if="comments.length === 0">
+                <p align="justify" style="color: #f27474">Aún no tenemos ningún comentarion :(</p>
             </div>
-            <div class="12u">
-                <h1 class="style1" align="center"> Comentarios </h1>
-            </div>
-        </div> 
+            <article ng-if="comments.length > 0" class="box post-excerpt" ng-repeat="comment in comments" style="color: #484d55;">
+                <a href="#" class="image left"><img src="images/pic08.jpg" alt=""></a>
+                <h3><a href="">{{comment.userName}}</a></h3> <span>{{comment.createAt | date : "medium"}}</span>
+                <p>{{comment.comment}}</p>
+            </article>
+        </div>
     </div>
 </div>

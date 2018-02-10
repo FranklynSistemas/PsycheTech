@@ -1,6 +1,6 @@
 app.controller('rootController', function($scope, $rootScope, $http) {
   $scope.form = {}
-  $rootScope.isAuth = true;
+  $rootScope.isAuth = false;
   $scope.sendFrom = function(form) {
 
     const url = '/createContact';
@@ -35,12 +35,26 @@ app.controller('rootController', function($scope, $rootScope, $http) {
 
   $window.on('load', function() {
     FB.getLoginStatus(function(response) {
-      $rootScope.isAuth =  false;
       statusChangeCallback(response);
     });
 
     function statusChangeCallback(response) {
       console.log('response', response);
+      if(response.status === 'connected') {
+        $rootScope.isAuth = true;
+      }
+
+      /*
+        {
+          status: 'connected',
+          authResponse: {
+              accessToken: '...',
+              expiresIn:'...',
+              signedRequest:'...',
+              userID:'...'
+          }
+      }  
+      */
     }
   });
 
