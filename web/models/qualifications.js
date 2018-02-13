@@ -10,6 +10,12 @@ const QualificationsSchema = new Schema({
     userName: {
       type: String,
     },
+    email: {
+      type: String,
+    },
+    picture: {
+      type: String,
+    },
     comment: {
         type: String
     },

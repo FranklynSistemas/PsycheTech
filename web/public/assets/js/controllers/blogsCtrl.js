@@ -1,8 +1,4 @@
 app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
-  console.log($rootScope.isAuth)
-  
-
-  var isAuth = $rootScope.isAuth;
   var $window = $(window);
   var articleName = $routeParams.name;
   var url = '/getArticles?name=' + articleName;
@@ -18,7 +14,6 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
   function init() {
 
     getArticle();
-
   }
 
   function getArticle() {
@@ -66,11 +61,14 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
   init();
 
   $scope.sendComment = function() {
-    if (isAuth) {
+    if ($rootScope.isAuth) {
       var comment = $scope.quali.comment;
       var comments = $scope.article.qualification.comments;
+      var user = $rootScope.user;
       comments.push({
-        userName: 'Franklyn',
+        userName: user.name,
+        email: user.email,
+        picture: user.picture.data.url,
         comment: comment
       });
       $scope.article.qualification.comments = comments;
@@ -87,9 +85,10 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
   function updateQualification(update) {
     var url = '/updateQualification';
     $http.put(url, update).
-      then(function(result) {
-        console.log(result.data);
-      })
+    then(function(result) {
+      $scope.quali.comment = "";
+      $scope.article.qualification = result.data;
+    })
   }
 
   function showMessage(info) {
@@ -100,24 +99,36 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
     );
   }
 
-  $scope.checkLoginState =  function() {
+  $scope.checkLoginState = function() {
     FB.getLoginStatus(function(response) {
       console.log('response', response)
-      if(response.status === 'connected') {
-        $rootScope.isAuth = true;
+      if (response.status === 'connected') {
+        fetchUserDetail();
+      } else {
+        initiateFBLogin();
       }
     });
   }
 
-  $window.on('load', function() {
-    var finished_rendering = function() {
-      console.log("finished rendering plugins");
-      var spinner = document.getElementById("spinner");
-      spinner.removeAttribute("style");
-      spinner.removeChild(spinner.childNodes[0]);
-    };
+  function fetchUserDetail() {
+    FB.api('/me?fields=id,name,picture,email', function(response) {
+      
+      $rootScope.$apply(function() {
+        $rootScope.isAuth = true;
+        $rootScope.user = response;
+        console.log('Successful login for: ', response);
+      });
+    });
+  }
 
-    FB.Event.subscribe('xfbml.render', finished_rendering);
-  })
+  function initiateFBLogin() {
+    FB.login(function(response) {
+      if (response.status !== 'connected') {
+        fetchUserDetail();
+      } else {
+        $rootScope.isAuth = false;
+      }
 
+    });
+  }
 });

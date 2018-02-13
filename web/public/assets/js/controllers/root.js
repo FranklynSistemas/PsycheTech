@@ -31,32 +31,4 @@ app.controller('rootController', function($scope, $rootScope, $http) {
 
   }
 
-  var $window = $(window);
-
-  $window.on('load', function() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-
-    function statusChangeCallback(response) {
-      console.log('response', response);
-      if(response.status === 'connected') {
-        $rootScope.isAuth = true;
-      }
-
-      /*
-        {
-          status: 'connected',
-          authResponse: {
-              accessToken: '...',
-              expiresIn:'...',
-              signedRequest:'...',
-              userID:'...'
-          }
-      }  
-      */
-    }
-  });
-
-
 });

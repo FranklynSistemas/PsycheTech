@@ -32,10 +32,11 @@
     <div class="row">
         <div class="12u">
             <h1 class="style1" align="center"> Dejanos tu comentario </h1>
-            <div id="spinner">
-                Cargando..
-                <div class="fb-login-button" data-scope="public_profile,email" onlogin="checkLoginState();" data-width="300px" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
-            </div>
+            <div ng-if="!isAuth" style="text-align: center;"><a href="" ng-click="checkLoginState()" type="button" class="icon fa-facebook-square btnFb">  Ingresar usando Facebook</a></div>
+        </div>
+        <div ng-show="user" style="float: none;text-align: center;">
+            <a href="" class="image"><img src="{{user.picture.data.url}}" alt=""></a>
+            <p>Escribir como {{user.name}}</p>
         </div>
         <div id="commentArea" class="12u">
             <div class="row">
@@ -53,11 +54,11 @@
             <header class="style1">
                 <h2>Comentarios</h2>
             </header>
-            <div ng-if="comments.length === 0">
+            <div ng-show="comments.length === 0">
                 <p align="justify" style="color: #f27474">Aún no tenemos ningún comentarion :(</p>
             </div>
-            <article ng-if="comments.length > 0" class="box post-excerpt" ng-repeat="comment in comments" style="color: #484d55;">
-                <a href="#" class="image left"><img src="images/pic08.jpg" alt=""></a>
+            <article ng-show="comments.length > 0" class="box post-excerpt" ng-repeat="comment in comments" style="color: #484d55;">
+                <a href="#" class="image left"><img src="{{comment.picture}}" alt=""></a>
                 <h3><a href="">{{comment.userName}}</a></h3> <span>{{comment.createAt | date : "medium"}}</span>
                 <p>{{comment.comment}}</p>
             </article>
