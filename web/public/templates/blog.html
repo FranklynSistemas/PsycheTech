@@ -1,9 +1,19 @@
 <div class="wrapper style2">
     <div class="title">Blog</div>
-    <div id="highlights" class="container">
+    <div id="highlights" class="container" style="padding: 15px;">
+        <div class="row divSearch">
+            <div class="8u search">
+                <input type="text" class="form-control" name="" placeholder="¿Qué tema buscas?" ng-model="filterBlog">
+            </div>
+        </div>
         <div class="row row 150%">
-            <div class="4u 12u(mobile)" ng-repeat="article in articles">
+            <div class="4u 12u(mobile)" ng-repeat="article in articles | orderBy: '-createAt' | filter:filterBlog ">
                 <div compile="article.shortView.content"></div>
+                <div class="qualification">
+                    <a class="icon fa-heart" href="" style="color: #f27474;"> {{article.qualification.likes}}</a>
+                    &nbsp;
+                    <a class="icon fa-comments" href="" style="color: #f7ab4d;"> {{article.qualification.comments.length}} </a>
+                </div>
                 <div style="text-align: center;"><a href="#/blogs/{{article.name}}" class="button style1">Leer Más</a></div>
             </div>
         </div>

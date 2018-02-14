@@ -16,6 +16,11 @@
                 <small class="form-text text-muted">Clasificación entre los blogs</small>
             </div>
             <div class="form-group">
+                <label>Relacionados</label>
+                <input ng-model="article.relations" type="text" class="form-control" placeholder="Relacionados ejemplo: 1,2,3,4">
+                <small class="form-text text-muted">Articulos relacionados ejemplo: 1,2,3,4</small>
+            </div>
+            <div class="form-group">
                 <label>Contenido</label>
                 <textarea ng-model="article.content" class="form-control" rows="15"></textarea>
                 <small class="form-text text-muted">Contenido principal del blog en HTML</small>
@@ -30,6 +35,18 @@
                 <label>Contenido</label>
                 <textarea ng-model="article.shortView.content" class="form-control" rows="5"></textarea>
                 <small class="form-text text-muted">Contenido del abstract en HTML</small>
+            </div>
+            <div class="form-group">
+                <label>Texto Facebook</label>
+                <textarea ng-model="article.shortView.text" class="form-control" rows="5"></textarea>
+                <small class="form-text text-muted">Resumen blog para facebook</small>
+            </div>
+            <div class="form-group">
+                <label class="switch">
+                    <input type="checkbox" ng-model="article.live">
+                    <span class="slider round"></span>
+                </label>
+                <small class="form-text text-muted"><strong>Azul</strong> para publicar en la web y <strong>gris</strong> para dejarlo pendiente de revisión</small>
             </div>
         </form>
         <button type="submit" class="btn btn-primary" ng-click="saveArticle()">Guardar</button>
@@ -55,6 +72,18 @@
             <div class="8u 12u(mobile) important(mobile)">
                 <div id="content" style="padding-right: 40px; padding-left: 40px;">
                     <div compile="article.content"></div>
+                </div>
+            </div>
+            <div class="4u 12u(mobile) important(mobile)">
+                <header>
+                    <h2 align="center" style="color: #f27474">Tal vez también te pueda interesar</h2>
+                </header>
+                <div id="sidebar">
+                    <div ng-repeat="article in articles">
+                        <div compile="article.shortView.content"></div>
+                        <div style="text-align: center;"><a href="#/blogs/{{article.name}}" class="button style1">Leer Más</a></div>
+                        <br>
+                    </div>
                 </div>
             </div>
         </div>

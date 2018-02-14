@@ -1,6 +1,6 @@
 app.controller('blogCtrl', function($scope, $http) {
 
-  var url = '/getArticles?categorie=blog';
+  var url = '/getArticles?categorie=blog&live=true';
   $scope.articles = [];
 
   $http.get(url)

@@ -61,6 +61,12 @@ exports.createArticle = async(req, res, next) => {
 exports.getArticles = async(req, res, next) => {
   let query = req.query;
 
+  if (query['relations'] !== undefined) {
+    const relations = query.relations.split(',')
+    delete query.relations
+    query.bost = {'$in': relations}
+  }
+  
   try {
 
     const articles = await Articles.find(query)

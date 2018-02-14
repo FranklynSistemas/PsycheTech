@@ -11,6 +11,16 @@
                         <p align="justify" style="color: #f27474">Ups! no hemos podido encontrar el blog que estas buscando, siempre puedes escribirnos en nuestro formulario de contacto</p>
                     </div>
                 </div>
+                <div class="qualification">
+                    <h3 class="style1"> Si te ha gustado dejenos un like o escribenos un comentario !</h3>
+                    <a class="icon fa-heart" ng-click="like()" href="" style="color: #f27474;"> {{article.qualification.likes}}</a> &nbsp;
+                    <a class="icon fa-comments" href="" style="color: #f7ab4d;"> {{article.qualification.comments.length}} </a>
+                    <h3 class="style1"> Comparte este blog en facebook!</h3>
+                    <div>
+                        <div class="fb-like" data-href="{{share}}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
+                        <div style="text-align: center;"><a href="" ng-click="sharer()" type="button" class="icon fa-facebook-square btnFb">  Compartir</a></div>
+                    </div>
+                </div>
             </div>
             <div class="4u 12u(mobile) important(mobile)">
                 <header>
@@ -34,9 +44,10 @@
             <h1 class="style1" align="center"> Dejanos tu comentario </h1>
             <div ng-if="!isAuth" style="text-align: center;"><a href="" ng-click="checkLoginState()" type="button" class="icon fa-facebook-square btnFb">  Ingresar usando Facebook</a></div>
         </div>
-        <div ng-show="user" style="float: none;text-align: center;">
+        <div class="infoUser" ng-show="user">
             <a href="" class="image"><img src="{{user.picture.data.url}}" alt=""></a>
             <p>Escribir como {{user.name}}</p>
+            <div ng-if="isAuth" style="text-align: center;"><a href="" ng-click="logout()" type="button" class="icon fa-facebook-square btnFb">  Salir de Facebook</a></div>
         </div>
         <div id="commentArea" class="12u">
             <div class="row">
@@ -60,7 +71,8 @@
             <article ng-show="comments.length > 0" class="box post-excerpt" ng-repeat="comment in comments" style="color: #484d55;">
                 <a href="#" class="image left"><img src="{{comment.picture}}" alt=""></a>
                 <h3><a href="">{{comment.userName}}</a></h3> <span>{{comment.createAt | date : "medium"}}</span>
-                <p>{{comment.comment}}</p>
+                <p align="justify" class="comment">{{comment.comment}}</p>
+                <hr>
             </article>
         </div>
     </div>

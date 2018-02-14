@@ -13,6 +13,7 @@
                     <th>Nombre</th>
                     <th>Likes</th>
                     <th>Comentarios</th>
+                    <th>On Air</th>
                     <th>Fecha</th>
                     <th> / </th>
                 </tr>
@@ -24,6 +25,8 @@
                     <td>{{article.name}}</td>
                     <td>{{article.qualification.likes}}</td>
                     <td>{{article.qualification.comments.length}}</td>
+                    <td ng-if="article.live"><a class="icon fa-check" href=""></a></td>
+                    <td ng-if="!article.live"><a class="icon fa-times" href=""></a></td>
                     <td>{{article.createAt | date : "fullDate"}}</td>
                     <td><a class="icon fa-edit" href="#/blog/{{article._id}}"></a></td>
                 </tr>

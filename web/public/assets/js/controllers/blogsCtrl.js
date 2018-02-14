@@ -1,6 +1,8 @@
 app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
-  var $window = $(window);
+
+  var giveLike = false;
   var articleName = $routeParams.name;
+  $scope.share = 'http://psychetech.co/#/blogs/' + articleName;
   var url = '/getArticles?name=' + articleName;
   $scope.article = {};
   $scope.status = {
@@ -23,7 +25,6 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
         if (result.data.status) {
           $scope.article = result.data.articles[0];
           $scope.comments = $scope.article.qualification.comments;
-          console.log("$scope.comments", $scope.comments)
           $scope.status.response = true;
           getArticles();
         }
@@ -34,8 +35,11 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
   }
 
   function getArticles() {
+    var allArticles = '/getArticles?categorie=blog&live=true';
+    if ($scope.article.relations) {
+      allArticles += '&relations=' + $scope.article.relations;
+    }
 
-    var allArticles = '/getArticles?categorie=blog';
 
     $http.get(allArticles)
       .then(function(result) {
@@ -59,6 +63,14 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
   }
 
   init();
+
+  $scope.like = function() {
+    if (!giveLike) {
+      $scope.article.qualification.likes += 1;
+      giveLike = true;
+      updateQualification($scope.article.qualification);
+    }
+  }
 
   $scope.sendComment = function() {
     if ($rootScope.isAuth) {
@@ -87,7 +99,7 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
     $http.put(url, update).
     then(function(result) {
       $scope.quali.comment = "";
-      $scope.article.qualification = result.data;
+      $scope.article.qualification = result.data.qualification;
     })
   }
 
@@ -99,9 +111,18 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
     );
   }
 
+  $scope.sharer = function() {
+    FB.ui({
+      method: 'share',
+      display: 'popup',
+      href:  $scope.share,
+      quote: $scope.article.shortView.text,
+      mobile_iframe: true
+    }, function(response) {});
+  }
+
   $scope.checkLoginState = function() {
     FB.getLoginStatus(function(response) {
-      console.log('response', response)
       if (response.status === 'connected') {
         fetchUserDetail();
       } else {
@@ -112,7 +133,7 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
 
   function fetchUserDetail() {
     FB.api('/me?fields=id,name,picture,email', function(response) {
-      
+
       $rootScope.$apply(function() {
         $rootScope.isAuth = true;
         $rootScope.user = response;
@@ -123,7 +144,7 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
 
   function initiateFBLogin() {
     FB.login(function(response) {
-      if (response.status !== 'connected') {
+      if (response.status === 'connected') {
         fetchUserDetail();
       } else {
         $rootScope.isAuth = false;
@@ -131,4 +152,16 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
 
     });
   }
+
+  $scope.logout = function() {
+    FB.logout(function(response) {
+      if (response.status === 'unknown') {
+        $rootScope.$apply(function() {
+          $rootScope.isAuth = false;
+          $rootScope.user = {}
+        });
+      }
+    });
+  }
+
 });

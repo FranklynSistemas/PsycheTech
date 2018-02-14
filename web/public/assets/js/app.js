@@ -22,13 +22,39 @@ app.config(function($routeProvider) {
 app.controller('startCtrl', function($rootScope) {
   var $window = $(window);
 
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: '293935774467795',
+      cookie: true,
+      xfbml: true,
+      version: 'v2.12'
+    });
+
+    FB.AppEvents.logPageView();
+
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+
+
   $window.on('load', function() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
 
     function statusChangeCallback(response) {
-      if (response.status === 'connected') {  
+      if (response.status === 'connected') {
         getUserInfo();
       }
 

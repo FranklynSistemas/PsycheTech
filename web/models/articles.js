@@ -18,6 +18,9 @@ const ArticlesSchema = new Schema({
         },
         content: {
             type: String
+        },
+        text: {
+            type: String
         }
     },
     bost: {
@@ -29,6 +32,13 @@ const ArticlesSchema = new Schema({
     },
     categorie: {
         type: String
+    },
+    relations: {
+        type: String
+    },
+    live: {
+        type: Boolean,
+        default: false
     }
 });
 

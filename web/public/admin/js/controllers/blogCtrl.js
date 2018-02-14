@@ -1,8 +1,9 @@
-app.controller('blogCtrl', function($scope, $routeParams, $http) {
+app.controller('blogCtrl', function($scope, $routeParams, $location, $http) {
 
   var articleId = $routeParams.id;
   var url = '/getArticles?_id=' + articleId;
   $scope.article = {};
+  $scope.articles = [];
   $scope.status = {
     response: false,
     err: false
@@ -33,8 +34,12 @@ app.controller('blogCtrl', function($scope, $routeParams, $http) {
       "<p align='justify'>Texto del abstract aquí</p>" +
       "</section>";
 
+    var text = "TITULO DEL BLOG \n" +
+      "Texto del abstract aquí nada con HTML";
+
     $scope.article.shortView = {
-      content: content
+      content: content,
+      text: text
     };
 
   }
@@ -46,11 +51,41 @@ app.controller('blogCtrl', function($scope, $routeParams, $http) {
         if (result.data.status) {
           $scope.article = result.data.articles[0];
           $scope.status.response = true;
+          getArticles();
         }
       }, function(err) {
         $scope.status.response = true;
         $scope.status.err = true;
       });
+  }
+
+  function getArticles() {
+    var allArticles = '/getArticles?categorie=blog&live=true';
+    if ($scope.article.relations) {
+      allArticles += '&relations=' + $scope.article.relations;
+    }
+
+
+    $http.get(allArticles)
+      .then(function(result) {
+          if (result.data.status) {
+            $scope.articles = cleanArticles(result.data.articles);
+          }
+        },
+        function(err) {
+          console.log(err)
+        })
+  }
+
+  function cleanArticles(articles) {
+    var showArticles = []
+    for (var i = 0; i < articles.length; i++) {
+      if (articles[i]._id !== articleId) {
+        showArticles.push(articles[i]);
+      }
+    }
+
+    return showArticles;
   }
 
   init();
@@ -143,7 +178,9 @@ app.controller('blogCtrl', function($scope, $routeParams, $http) {
       'Bien!',
       msg,
       'success'
-    );
+    ).then(function() {
+      window.location.href = '/administrator#/blogs';
+    })
   }
 
   function error(error) {

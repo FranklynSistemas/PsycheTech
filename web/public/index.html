@@ -15,9 +15,11 @@
     <meta property="og:description" content="Psycología y Tecnología lo que no sabías">
     <meta property="og:image" content="http://psychetech.co/images/icon.png">
     <meta property="og:url" content="http://psychetech.co">
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@Psyche_Tech_" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css" />
     <!-- utils css -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.6.3/sweetalert2.min.css">
@@ -34,32 +36,10 @@
 
     gtag('config', 'UA-113311173-1');
     </script>
-    <!-- Facebook -->
-    <script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId: '293935774467795',
-            cookie: true,
-            xfbml: true,
-            version: 'v2.12'
-        });
-
-        FB.AppEvents.logPageView();
-
-    };
-
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) { return; }
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
+   
 </head>
 
-<body class="homepage" ng-controller="startCtrl">
+<body class="homepage">
     <div id="page-wrapper">
         <!-- Header -->
         <div id="header-wrapper" class="wrapper">
@@ -82,7 +62,9 @@
             </div>
         </div>
         <!-- Body -->
-        <div ng-view></div>
+
+        <div ng-controller="startCtrl" ng-view></div>
+        <div id="fb-root"></div>
         <!-- Footer -->
         <div id="footer-wrapper" class="wrapper" ng-controller="rootController">
             <div class="title">Contáctanos</div>
@@ -161,6 +143,7 @@
 <script src="assets/js/skel-viewport.min.js"></script>
 <script src="assets/js/util.js"></script>
 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="assets/js/main.js"></script>
 <!-- utils -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.6.3/sweetalert2.all.min.js"></script>
