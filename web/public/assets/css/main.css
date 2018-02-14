@@ -2,10 +2,11 @@
 @import url("font-awesome.min.css");
 
 
+
 /*
-	Escape Velocity by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Escape Velocity by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
 
@@ -146,6 +147,7 @@ body {
 }
 
 
+
 /* Box Model */
 
 *,
@@ -155,6 +157,7 @@ body {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+
 
 
 /* Our CSS */
@@ -238,7 +241,15 @@ body {
     font: 12px Verdana, sans-serif;
 }
 
-.btnFb:hover{
+.btnFb:hover {
+    color: white !important;
+}
+
+.namePage:hover {
+    color: #feb04f;
+}
+
+iframe a {
     color: white !important;
 }
 
@@ -271,6 +282,7 @@ body {
     text-align: center;
     margin-bottom: 6px;
 }
+
 
 /*        */
 
@@ -378,6 +390,7 @@ body {
         width: 100% !important;
     }
 }
+
 
 
 /* Grid */
@@ -1340,6 +1353,7 @@ body {
 }
 
 
+
 /* Basic */
 
 @-ms-viewport {
@@ -1452,6 +1466,7 @@ form {
 }
 
 
+
 /* Table */
 
 table {
@@ -1484,6 +1499,7 @@ table.default thead {
 table.default tfoot {
     background: #eee;
 }
+
 
 
 /* Form */
@@ -1565,6 +1581,7 @@ form ::-moz-focus-inner {
 }
 
 
+
 /* Section/Article */
 
 section,
@@ -1590,6 +1607,7 @@ header.style1 h2 {
 header.style1 p {
     color: #b1b4b9;
 }
+
 
 
 /* Image */
@@ -1628,6 +1646,7 @@ header.style1 p {
     width: 50%;
     margin: 0 auto;
 }
+
 
 
 /* Button */
@@ -1739,6 +1758,7 @@ button.style3:active,
 }
 
 
+
 /* List */
 
 ul.default {
@@ -1784,6 +1804,7 @@ ol.default li {
 }
 
 
+
 /* Feature List */
 
 .feature-list h3 {
@@ -1798,6 +1819,7 @@ ol.default li {
     border-radius: 1em;
     text-align: center;
 }
+
 
 
 /* Icons */
@@ -1821,6 +1843,7 @@ ol.default li {
 .icon>.label {
     display: none;
 }
+
 
 
 /* Wrappers */
@@ -2021,6 +2044,7 @@ ol.default li {
 }
 
 
+
 /* Logo */
 
 #logo h1 {
@@ -2034,6 +2058,7 @@ ol.default li {
     color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
 }
+
 
 
 /* Intro */
@@ -2051,6 +2076,7 @@ ol.default li {
 }
 
 
+
 /* Highlights */
 
 #highlights .highlight {
@@ -2060,6 +2086,7 @@ ol.default li {
 #highlights .highlight h3 {
     color: #ffb150;
 }
+
 
 
 /* Copyright */
@@ -2083,6 +2110,7 @@ ol.default li {
 #copyright a:hover {
     color: #fff;
 }
+
 
 
 /* Desktop + Tablet */
@@ -2514,6 +2542,7 @@ ol.default li {
 }
 
 
+
 /* Tablet Only */
 
 @media screen and (min-width: 737px) and (max-width: 1200px) {
@@ -2583,6 +2612,7 @@ ol.default li {
         margin: 3em 0 0 0;
     }
 }
+
 
 
 /* Mobile Only */

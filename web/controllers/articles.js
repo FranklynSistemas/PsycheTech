@@ -1,6 +1,16 @@
 const Articles = require('../models/articles')
 const Qualifications = require('../models/qualifications')
+const Twitter = require('twitter-node-client').Twitter
 
+const config = {
+  "consumerKey": "ufkSKEGnmO7uoBZ5hZrcQKgSJ",
+  "consumerSecret": "NqJmsARtut89ePgSkqCYvNzZBISd8XW60Zi7MY5gB703BKKzVK",
+  "accessToken": "956708819983364096-zl3lrOyEMrQB2Pwi2S84CKqRPezORvc",
+  "accessTokenSecret": "gCJLXJr44mbuTXalRedTvSCAlcEzCs5UuzbVQtYEZU0mB",
+  "callBackUrl": "http://psychetech.co"
+}
+
+const twitter = new Twitter(config)
 
 const createQualification = async() => {
 
@@ -36,6 +46,7 @@ const createQualification = async() => {
 exports.createArticle = async(req, res, next) => {
 
   try {
+
     const qualifications = await createQualification();
     let newArticle = req.body
     newArticle.qualification = qualifications._id
@@ -64,9 +75,19 @@ exports.getArticles = async(req, res, next) => {
   if (query['relations'] !== undefined) {
     const relations = query.relations.split(',')
     delete query.relations
-    query.bost = {'$in': relations}
+    query.bost = {
+      '$in': relations
+    }
   }
-  
+
+  /*twitter.getHomeTimeline({
+    count: '10'
+  }, function(error) {
+    console.log('error', error)
+  }, function(success) {
+    console.log('success', success)
+  })*/
+
   try {
 
     const articles = await Articles.find(query)

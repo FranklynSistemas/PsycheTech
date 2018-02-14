@@ -42,7 +42,7 @@ app.controller('startCtrl', function($rootScope) {
     }
     js = d.createElement(s);
     js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    js.src = "https://connect.facebook.net/es_LA/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
@@ -78,7 +78,7 @@ app.controller('startCtrl', function($rootScope) {
           $rootScope.user = response;
         });
       });
-
     }
+
   });
 })

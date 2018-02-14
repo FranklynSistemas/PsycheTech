@@ -6,6 +6,10 @@
                 <input type="text" class="form-control" name="" placeholder="¿Qué tema buscas?" ng-model="filterBlog">
             </div>
         </div>
+        <script>
+          fbq('track', 'Search');
+        </script>
+
         <div class="row row 150%">
             <div class="4u 12u(mobile)" ng-repeat="article in articles | orderBy: '-createAt' | filter:filterBlog ">
                 <div compile="article.shortView.content"></div>
