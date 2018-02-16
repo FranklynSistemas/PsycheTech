@@ -17,6 +17,7 @@ mongoose.connect('mongodb://35.229.107.224:80/psychetech',
 });
 
 // Configuración
+app.use(require('prerender-node').set('prerenderServiceUrl', 'http://localhost:3000'));
 
 // Localización de los ficheros estaticos
 app.use(express.static(__dirname + '/public'));				
