@@ -7,17 +7,37 @@
 <html ng-app="PsycheTech">
 
 <head>
-    <title>PsychéTech</title>
     <meta charset="utf-8" />
     <meta name="description" content="Psycología y Tecnología lo que no sabías">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:title" content="PsycheTéch">
-    <meta property="og:description" content="Psycología y Tecnología lo que no sabías">
-    <meta property="og:image" content="http://psychetech.co/images/icon.png">
-    <meta property="og:url" content="http://psychetech.co">
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@Psyche_Tech_" />
+    <meta name="fragment" content="!">
+    <!-- Start SEO Metadata -->
+    <title>PsychéTech</title>
+    <meta name="description" content="Aquí podrás encontrar novedades y grandes curiosidades sobre psicología y tecnología, encuentra todo lo que no sabías y lo que te estás perdiendo.">
+    <link rel="canonical" href="https://www.psychetech.co">
+    <!-- End SEO Metadata -->
+    <!-- Start Twitter Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Psyche_Tech_">
+    <meta name="twitter:title" content="Psyché Tech">
+    <meta name="twitter:image" content="https://pbs.twimg.com/profile_banners/956708819983364096/1518058997/1500x500">
+    <meta name="twitter:image:height" content="500">
+    <meta name="twitter:image:width" content="1200">
+    <meta name="twitter:description" content="Aquí podrás encontrar novedades y grandes curiosidades sobre psicología y tecnología, encuentra todo lo que no sabías y lo que te estás perdiendo.">
+    <meta name="twitter:creator" content="@Psyche_Tech_">
+    <!-- End Twitter Metadata -->
+    <!-- Start Facebook Metadata -->
+    <meta property="fb:app_id" content="293935774467795">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Psyché Tech">
+    <meta property="og:url" content="https://www.psychetech.co">
+    <meta property="og:image" content="https://pbs.twimg.com/profile_banners/956708819983364096/1518058997/1500x500">
+    <meta property="og:image:height" content="500">
+    <meta property="og:image:width" content="1500">
+    <meta property="og:site_name" content="Psyché Tech">
+    <meta property="og:description" content="Aquí podrás encontrar novedades y grandes curiosidades sobre psicología y tecnología, encuentra todo lo que no sabías y lo que te estás perdiendo.">
+    <!-- End Facebook Metadata -->
+
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -63,7 +83,7 @@
     <!-- End Facebook Pixel Code -->
 </head>
 
-<body class="homepage">
+<body class="homepage" ng-controller="startCtrl">
     <div id="page-wrapper">
         <!-- Header -->
         <div id="header-wrapper" class="wrapper">
@@ -87,7 +107,7 @@
             </div>
         </div>
         <!-- Body -->
-        <div ng-controller="startCtrl" ng-view></div>
+        <div ng-view></div>
         <div id="fb-root"></div>
         <!-- Footer -->
         <div id="footer-wrapper" class="wrapper" ng-controller="rootController">
@@ -138,9 +158,13 @@
                                     <section>
                                         <h3 class="icon fa-comment">Social</h3>
                                         <p>
-                                            <a class="icon fa-twitter" href="https://twitter.com/@Psyche_Tech_"> @Psyche_Tech_</a>
+                                            <a class="icon fa-twitter" href="https://twitter.com/@Psyche_Tech_" target="_blank"> @Psyche_Tech_</a>
                                             <br />
-                                            <a class="icon fa-facebook" href="https://fb.me/PsycheTech1"> @PsycheTech1</a>
+                                            <a class="icon fa-facebook" href="https://fb.me/PsycheTech1" target="_blank"> @PsycheTech1</a>
+                                            <br />
+                                            <a class="icon fa-instagram" href="https://www.instagram.com/psyche_tech/" target="_blank"> @psyche_tech</a>
+                                            <br />
+                                            <a class="icon fa-youtube" href="https://www.youtube.com/channel/UCstGJbrseKyffiG_PEowmJA" target="_blank"> PsychéTech</a>
                                         </p>
                                     </section>
                                 </div>
@@ -159,6 +183,7 @@
             </div>
         </div>
     </div>
+    <button ng-click="getUp()" id="myBtn" title="Go to top"><i class="icon fa-chevron-circle-up"></i></button>
 </body>
 <!-- scripts -->
 <script src="assets/js/jquery.min.js"></script>

@@ -19,7 +19,7 @@ app.config(function($routeProvider) {
     });
 })
 
-app.controller('startCtrl', function($rootScope) {
+app.controller('startCtrl', function($scope, $rootScope) {
   var $window = $(window);
 
 
@@ -80,5 +80,24 @@ app.controller('startCtrl', function($rootScope) {
       });
     }
 
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+      scrollFunction()
+    };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+      } else {
+        document.getElementById("myBtn").style.display = "none";
+      }
+    }
+
   });
+
+  $scope.getUp = function() {
+    console.log("getUp");
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
 })

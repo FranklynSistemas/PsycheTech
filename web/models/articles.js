@@ -36,6 +36,9 @@ const ArticlesSchema = new Schema({
     relations: {
         type: String
     },
+    keywords: {
+        type: String
+    },
     live: {
         type: Boolean,
         default: false
