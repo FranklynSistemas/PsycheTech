@@ -170,13 +170,13 @@ body {
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
-    background-color: #ff000000; /* Set a background color */
-    color: white; /* Text color */
+    background-color: #ff000000 !important; /* Set a background color */
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 5px; /* Some padding */
     border-radius: 10px; /* Rounded corners */
     font-size: 40px; /* Increase font size */
     min-width: 80px !important;
+    width: 80px;
     height: 80px;
     border-radius: 50%;
     color: #f27474 !important;
@@ -413,6 +413,10 @@ iframe a {
     }
 
     .container {
+        width: 100% !important;
+    }
+
+    .featured {
         width: 100% !important;
     }
 }
