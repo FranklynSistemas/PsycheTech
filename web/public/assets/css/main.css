@@ -170,7 +170,8 @@ body {
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
-    background-color: #ff000000 !important; /* Set a background color */
+    background: rgba(250, 235, 215, 0) !important;
+    background-color: rgba(250, 235, 215, 0) !important; /* Set a background color */
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 5px; /* Some padding */
     border-radius: 10px; /* Rounded corners */
