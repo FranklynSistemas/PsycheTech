@@ -19,9 +19,22 @@ app.config(function($routeProvider) {
     });
 })
 
-app.controller('startCtrl', function($scope, $rootScope) {
+app.controller('startCtrl', function($scope, $rootScope, $location) {
   var $window = $(window);
 
+  $scope.baseText = 'Aquí podrás encontrar novedades y grandes curiosidades sobre ' +
+    'psicología y tecnología, encuentra todo lo que no sabías y lo que te estás perdiendo.';
+
+  $rootScope.baseUrl = 'http://psychetech.co/#';
+
+  $scope.$on('$viewContentLoaded', function() {
+    var location = $location.path().split('/');
+    if(location.length < 3) {
+      $("#share").jsSocials("option", "text", $scope.baseText);
+      $("#share").jsSocials("option", "url", $rootScope.baseUrl + $location.path());
+      $("#share").jsSocials("refresh");
+    }
+  });
 
   window.fbAsyncInit = function() {
     FB.init({
@@ -93,10 +106,19 @@ app.controller('startCtrl', function($scope, $rootScope) {
       }
     }
 
+    $("#share").jsSocials({
+      shares: ["email", "twitter", {
+        share: "facebook",
+        label: "Share"
+      }, "linkedin", "whatsapp"],
+      url: $rootScope.baseUrl + $location.path(),
+      showCount: true,
+      shareIn: "popup"
+    });
+
   });
 
   $scope.getUp = function() {
-    console.log("getUp");
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }

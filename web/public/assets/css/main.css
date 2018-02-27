@@ -310,6 +310,13 @@ iframe a {
     margin-bottom: 6px;
 }
 
+#share {
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 5px;
+}
+
 
 /*        */
 
@@ -1789,6 +1796,33 @@ button.style3:active,
 }
 
 
+/* Style4 */
+input[type="button"].style4,
+input[type="submit"].style4,
+input[type="reset"].style4,
+button.style4,
+.button.style4 {
+    background: #f27474 url("images/overlay.png");
+    color: #fff;
+}
+
+input[type="button"].style4:hover,
+input[type="submit"].style4:hover,
+input[type="reset"].style4:hover,
+button.style4:hover,
+.button.style4:hover {
+    background-color: #f27474b8;
+}
+
+input[type="button"].style4:active,
+input[type="submit"].style4:active,
+input[type="reset"].style4:active,
+button.style4:active,
+.button.style4:active {
+    background-color: #f27474b8;
+}
+
+/* Style4 */
 
 /* List */
 

@@ -1,4 +1,4 @@
-app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
+app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $timeout, $http) {
 
   var giveLike = false;
   var articleName = $routeParams.name;
@@ -13,8 +13,19 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
 
   $scope.articles = [];
 
-  function init() {
+  function initSocialShare() {
+    $timeout(function() {
+      $("#share").jsSocials("option", "text", $scope.article.shortView.text);
+      $("#share").jsSocials("option", "url", $scope.share);
+      $("#share").jsSocials("refresh");
+    }, 200);
+  }
 
+  $scope.$on('$viewContentLoaded', function() {
+    init();
+  });
+
+  function init() {
     getArticle();
   }
 
@@ -26,6 +37,7 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
           $scope.article = result.data.articles[0];
           $scope.comments = $scope.article.qualification.comments;
           $scope.status.response = true;
+          initSocialShare();
           getArticles();
         }
       }, function(err) {
@@ -61,8 +73,6 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
 
     return showArticles;
   }
-
-  init();
 
   $scope.like = function() {
     if (!giveLike) {
@@ -115,7 +125,7 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $http) {
     FB.ui({
       method: 'share',
       display: 'popup',
-      href:  $scope.share,
+      href: $scope.share,
       quote: $scope.article.shortView.text,
       mobile_iframe: true
     }, function(response) {});
