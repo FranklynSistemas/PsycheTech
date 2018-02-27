@@ -19,7 +19,7 @@ app.config(function($routeProvider) {
     });
 })
 
-app.controller('startCtrl', function($scope, $rootScope, $location) {
+app.controller('startCtrl', function($scope, $rootScope, $location, $http) {
   var $window = $(window);
 
   $scope.baseText = 'Aquí podrás encontrar novedades y grandes curiosidades sobre ' +
@@ -29,7 +29,7 @@ app.controller('startCtrl', function($scope, $rootScope, $location) {
 
   $scope.$on('$viewContentLoaded', function() {
     var location = $location.path().split('/');
-    if(location.length < 3) {
+    if (location.length < 3) {
       $("#share").jsSocials("option", "text", $scope.baseText);
       $("#share").jsSocials("option", "url", $rootScope.baseUrl + $location.path());
       $("#share").jsSocials("refresh");
@@ -113,10 +113,27 @@ app.controller('startCtrl', function($scope, $rootScope, $location) {
       }, "linkedin", "whatsapp"],
       url: $rootScope.baseUrl + $location.path(),
       showCount: true,
-      shareIn: "popup"
+      shareIn: "popup",
+      on: {
+        click: function(e) {
+          createLog({
+            eventName: 'Social Share',
+            log: this.share + " share " + this.url
+          })
+        }
+      }
     });
 
   });
+
+  function createLog(data) {
+    var url = '/createLog';
+
+    $http.post(url, data).
+    then(function(result) {
+      console.log(result);
+    })
+  }
 
   $scope.getUp = function() {
     document.body.scrollTop = 0; // For Safari

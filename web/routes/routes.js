@@ -6,6 +6,8 @@ const admins = require('../controllers/admins')
 const contacts = require('../controllers/contacts')
 const articles = require('../controllers/articles')
 const qualifications = require('../controllers/qualifications')
+const logs = require('../controllers/logs')
+
 
 function authenticationMiddleware() {
   return function(req, res, next) {
@@ -16,6 +18,11 @@ function authenticationMiddleware() {
   }
 }
 
+// Routes Logs
+router.post('/createLog', logs.createLog)
+router.get('/getLogs', logs.getLogs)
+
+// Routes Contacts
 router.post('/createContact', contacts.createContact)
 router.get('/getContacts', contacts.getContacts)
 
