@@ -1,0 +1,186 @@
+<!-- Main -->
+<div class="wrapper style2" ng-if="serviceName === 'personas'">
+    <div class="title">Servicios personales</div>
+    <div id="main" class="container">
+        <a href="#" class="image banner">
+            <img src="images/person.jpg" alt="" />
+        </a>
+        <div class="row" style="width: 90%; margin: 0 auto;">
+            <div class="12u 12u(mobile)">
+                <section>
+                    <p align="justify">Comprendemos que las necesidades de las personas son diferentes y muchas de ellas requieren una atención personalizada, es por ello que ofrecemos talleres dinámicos por vídeo llamada; Donde se podrán reforzar todas esas habilidades que desees mejorar; a continuación te mostramos algunas de ellas; también puedes proponernos un tema de interés sobre el que quisieras reforzar o mejorar; para ello te pedimos diligencies el formulario que encontrarás a continuación.</p>
+                </section>
+            </div>
+            <div class="6u 12u(mobile)">
+                <section>
+                    <header class="style1">
+                        <h3>COMO CREAR TU PROPIA HOJA DE VIDA</h3>
+                    </header>
+                    <p class="style2" align="center">Abordaremos temas como estructura, pros y contras; características, anexos entre otros.</p>
+                </section>
+            </div>
+            <div class="6u 12u(mobile)">
+                <section>
+                    <header class="style1">
+                        <h3>PREPARACIÓN PARA UNA ENTREVISTA DE TRABAJO</h3>
+                    </header>
+                    <p class="style2" align="center">Trabajaremos el lenguaje verbal y no-verbal, manejo de estrés, Relajación Muscular, Visual y Entrenamiento en parada y cambio de pensamiento, entre otros.</p>
+                </section>
+            </div>
+            <div class="12u">
+                <header class="style1">
+                    <h2>Solicitar servicio personalizado</h2>
+                    <p>
+                        Llena el siguiente formulario y te contactáremos en un 2x3!
+                    </p>
+                </header>
+                <form>
+                    <div class="row 50%">
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="text" ng-model="form.name" placeholder="Nombre" required />
+                        </div>
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="text" ng-model="form.email" placeholder="Correo" required />
+                        </div>
+                    </div>
+                    <div class="row 50%">
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="number" ng-model="form.phone" placeholder="Celular" required />
+                        </div>
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="text" ng-model="form.topic" placeholder="Tema del taller" required />
+                        </div>
+                    </div>
+                    <div class="row 50%">
+                        <div class="6u 12u(mobile)">
+                            <select class="form-control inputs" ng-model="form.availability" required>
+                                <option selected value="0">Disponibilidad...</option>
+                                <option value="1">1 Hora</option>
+                                <option value="2">2 Horas</option>
+                            </select>
+                        </div>
+                        <div class="6u 12u(mobile)">
+                            <select class="form-control inputs" ng-model="form.typeVideoCall" required>
+                                <option selected value="0">Servicio de video llamada...</option>
+                                <option value="1">Skype</option>
+                                <option value="2">hangouts</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row 50%">
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="time" ng-model="form.time" placeholder="Hora" required />
+                        </div>
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="date" ng-model="form.date" placeholder="Fecha" required />
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 0px;">
+                        <div class="12u" style="text-align: center;">
+                            <input type="submit" style="width: 80%;" ng-click="sendFrom(form)" class="style1" value="Solicitar" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Empresas -->
+<div class="wrapper style2" ng-if="serviceName === 'empresas-e-instituciones'">
+    <div class="title">Servicios empresas e instituciones</div>
+    <div id="main" class="container">
+        <a href="#" class="image banner">
+            <img src="images/empresa.jpg" alt="" />
+        </a>
+        <div class="row" style="width: 90%; margin: 0 auto;">
+            <div class="12u 12u(mobile)">
+                <section>
+                    <p align="justify">Entendemos que cada población académica o laboral tienen necesidades diferentes, es por ello que ofrecemos talleres dinámicos por vídeo llamada o presencial; donde se podrán reforzar las habilidades para cada grupo de trabajo; laboral, estudiantes de primaria, bachilleres o Universitarios; a continuación te mostramos algunas de ellas; también puedes proponernos un tema de interés sobre los que te interesaría tratar con tu grupo.</p>
+                </section>
+            </div>
+            <div class="6u 12u(mobile)">
+                <section>
+                    <header class="style1">
+                        <h3>COMO CREAR TU PROPIA HOJA DE VIDA</h3>
+                    </header>
+                    <p class="style2" align="center">Abordaremos temas como estructura, pros y contras; características, anexos entre otros.</p>
+                </section>
+            </div>
+            <div class="6u 12u(mobile)">
+                <section>
+                    <header class="style1">
+                        <h3>PREPARACIÓN PARA UNA ENTREVISTA DE TRABAJO</h3>
+                    </header>
+                    <p class="style2" align="center">Trabajaremos el lenguaje verbal y no-verbal, manejo de estrés, Relajación Muscular, Visual y Entrenamiento en parada y cambio de pensamiento, entre otros.</p>
+                </section>
+            </div>
+            <div class="12u">
+                <header class="style1">
+                    <h2>Solicitar servicio personalizado</h2>
+                    <p>
+                        Llena el siguiente formulario y te contactáremos en un 2x3!
+                    </p>
+                </header>
+                <form>
+                    <div class="row">
+                        <div class="12u 12u(mobile)">
+                            <input class="form-control inputs" type="text" ng-model="form.nameEntity" placeholder="Nombre Entidad o Empresa" required />
+                        </div>
+                    </div>
+                    <h3>Datos persona de contacto</h3>
+                    <div class="row 50%">
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="text" ng-model="form.name" placeholder="Nombre" required />
+                        </div>
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="text" ng-model="form.email" placeholder="Correo" required />
+                        </div>
+                    </div>
+                    <div class="row 50%">
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="number" ng-model="form.phone" placeholder="Celular" required />
+                        </div>
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="text" ng-model="form.ocupation" placeholder="Cargo" required />
+                        </div>
+                    </div>
+                    <h3>Datos taller a solicitar</h3>
+                     <div class="row">
+                        <div class="12u 12u(mobile)">
+                            <input class="form-control inputs" type="text" ng-model="form.topic" placeholder="Tema del taller" required />
+                        </div>
+                    </div>
+                    <div class="row 50%">
+                        <div class="6u 12u(mobile)">
+                            <select class="form-control inputs" ng-model="form.availability" required>
+                                <option selected value="0">Disponibilidad...</option>
+                                <option value="1">1 Hora</option>
+                                <option value="2">2 Horas</option>
+                            </select>
+                        </div>
+                        <div class="6u 12u(mobile)">
+                            <select class="form-control inputs" ng-model="form.typeVideoCall" required>
+                                <option selected value="0">Servicio de video llamada...</option>
+                                <option value="1">Skype</option>
+                                <option value="2">hangouts</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row 50%">
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="time" ng-model="form.time" placeholder="Hora" required />
+                        </div>
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="date" ng-model="form.date" placeholder="Fecha" required />
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 0px;">
+                        <div class="12u" style="text-align: center;">
+                            <input type="submit" style="width: 80%;" ng-click="sendFrom(form)" class="style1" value="Solicitar" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
