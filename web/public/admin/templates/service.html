@@ -1,0 +1,61 @@
+<!-- Intro -->
+<div id="intro-wrapper" class="wrapper style3">
+    <div class="title">Admin</div>
+    <section id="intro" class="container">
+        <h2>Modo Edición</h2>
+        <p class="style1"> {{service.title}}</p>
+        <form>
+            <div class="form-group">
+                <label>Titulo</label>
+                <input ng-model="service.title" type="text" class="form-control" aria-describedby="name" placeholder="Titulo">
+                <small class="form-text text-muted">El titulo del servicio</small>
+            </div>
+            <div class="form-group">
+                <label>Bost</label>
+                <input ng-model="service.bost" type="number" class="form-control" placeholder="Bost">
+                <small class="form-text text-muted">Clasificación entre los servicios</small>
+            </div>
+            <div class="form-group">
+                <label>Contenido</label>
+                <textarea ng-model="service.content" class="form-control" rows="8"></textarea>
+                <small class="form-text text-muted">Contenido del servicio en HTML</small>
+            </div>
+            <div class="form-group">
+                <label>Tipo</label>
+                <select class="form-control inputs" ng-model="service.type" required>
+                    <option value="personas">Personas</option>
+                    <option value="empresas-e-instituciones">Empresas e Instituciones</option>
+                </select>
+                <small class="form-text text-muted">Tipo de servicio ejemplo: Personas</small>
+            </div>
+            <div class="form-group">
+                <label>Precio</label>
+                <input ng-model="service.price" type="number" class="form-control" placeholder="Precio">
+                <small class="form-text text-muted">Precio del servicio</small>
+            </div>
+            <div class="form-group">
+                <label class="switch">
+                    <input type="checkbox" ng-model="service.live">
+                    <span class="slider round"></span>
+                </label>
+                <small class="form-text text-muted"><strong>Azul</strong> para publicar en la web y <strong>gris</strong> para dejarlo pendiente de revisión</small>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-primary" ng-click="saveService()">Guardar</button>
+    </section>
+</div>
+<div class="wrapper style2">
+    <div class="container">
+        <div class="row">
+            <div class="12u 12u(mobile)">
+                <h1 align="center">Preview Service</h1>
+            </div>
+            <div class="6u 12u(mobile)" style="margin: 0 auto;text-align: center;">
+                <header class="style3">
+                    <h3>{{service.title}}</h3>
+                </header>
+                <div compile="service.content"></div>
+            </div>
+        </div>
+    </div>
+</div>

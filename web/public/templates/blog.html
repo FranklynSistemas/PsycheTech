@@ -11,7 +11,7 @@
         </script>
 
         <div class="row row 150%">
-            <div class="4u 12u(mobile)" ng-repeat="article in articles | orderBy: '-createAt' | filter:filterBlog ">
+            <div class="4u 12u(mobile)" ng-repeat="article in articles | orderBy: '-bost' | filter:filterBlog ">
                 <div compile="article.shortView.content"></div>
                 <div class="qualification">
                     <a class="icon fa-heart" href="" style="color: #f27474;"> {{article.qualification.likes}}</a>

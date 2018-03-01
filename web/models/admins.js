@@ -31,17 +31,15 @@ let AdminSchema = new Schema({
   }
 })
 
-const preSave = function(next) {
+const preSave = function (next) {
   let self = this
-  console.log('Entra', self)
   self.modified = Date().now
   if (self.email) {
     self.email = self.email.toLowerCase()
   }
 
-
   if (self.password) {
-    getHash(self.password, function(err, hash, salt) {
+    getHash(self.password, function (err, hash, salt) {
       if (err) {
         throw err
       } else {
@@ -49,17 +47,16 @@ const preSave = function(next) {
         self.hash = hash
         self.password = ''
       }
-      next();
-    });
+      next()
+    })
   } else {
     next()
   }
 }
 
-AdminSchema.methods.validPassword = function(password, callback) {
+AdminSchema.methods.validPassword = function (password, callback) {
   const self = this
-  console.log('validPassword')
-  getHash(password, self.salt, function(err, hash) {
+  getHash(password, self.salt, function (err, hash) {
     if (hash === self.hash) {
       callback(true)
     } else {

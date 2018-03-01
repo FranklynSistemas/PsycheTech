@@ -2,10 +2,8 @@ const mongoose = require('mongoose')
 require('../models/contacts')
 const Contacts = mongoose.model('contacts')
 
-exports.createContact = async(req, res, next) => {
-
+exports.createContact = async (req, res, next) => {
   try {
-
     const contact = await new Contacts(req.body)
       .save()
 
@@ -13,18 +11,15 @@ exports.createContact = async(req, res, next) => {
       status: true,
       info: 'contact create success'
     })
-
-
   } catch (error) {
     res.json({
       status: false,
       info: 'error created contact'
     })
   }
-
 }
 
-exports.getContacts = async(req, res, next) => {
+exports.getContacts = async (req, res, next) => {
   try {
     const contacts = await Contacts.find()
 

@@ -36,7 +36,7 @@
                     <h2 align="center" style="color: #f27474">Tal vez también te pueda interesar</h2>
                 </header>
                 <div id="sidebar">
-                    <div ng-repeat="article in articles">
+                    <div ng-repeat="article in articles | orderBy: '-bost'">
                         <div compile="article.shortView.content"></div>
                         <div style="text-align: center;"><a href="#/blogs/{{article.name}}" class="button style1">Leer Más</a></div>
                         <br>

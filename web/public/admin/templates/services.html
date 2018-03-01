@@ -1,0 +1,38 @@
+<!-- Intro -->
+<div id="intro-wrapper" class="wrapper style3">
+    <div class="title">Admin</div>
+    <section id="intro" class="container">
+        <a href="#/service/0" type="button" class="btn btn-info btn-block">Crear Servicio</a>
+        <br>
+        <p class="style1"> Nuestros Servicios</p>
+        <table class="table table-bordered">
+            <thead class="thead">
+                <tr class="table-danger">
+                    <th>#</th>
+                    <th>Bost</th>
+                    <th>Titulo</th>
+                    <th>Contenido</th>
+                    <th>Precio</th>
+                    <th>Tipo</th>
+                    <th>On Air</th>
+                    <th>Fecha</th>
+                    <th> / </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-success" ng-repeat="service in services">
+                    <td>{{$index + 1}}</td>
+                    <td>{{service.bost}}</td>
+                    <td>{{service.title}}</td>
+                    <td>{{service.content}}</td>
+                    <td>{{service.price | currency:"$":0}}</td>
+                    <td>{{service.type}}</td>
+                    <td ng-if="service.live"><a class="icon fa-check" href=""></a></td>
+                    <td ng-if="!service.live"><a class="icon fa-times" href=""></a></td>
+                    <td>{{service.createAt | date : "fullDate"}}</td>
+                    <td><a class="icon fa-edit" href="#/service/{{service._id}}"></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
