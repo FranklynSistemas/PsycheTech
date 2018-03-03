@@ -17,7 +17,7 @@ app.controller('serviceCtrl', function ($scope, $routeParams, $location, $http) 
   }
 
   function fillFilds () {
-    $scope.service.content = '<p>Aqui el texto del servicio o caracteristicas</p>'
+    $scope.service.content = 'Aqui el texto del servicio o caracteristicas'
   }
 
   function getService () {

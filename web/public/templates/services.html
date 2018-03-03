@@ -11,20 +11,13 @@
                     <p align="justify">Comprendemos que las necesidades de las personas son diferentes y muchas de ellas requieren una atención personalizada, es por ello que ofrecemos talleres dinámicos por vídeo llamada; Donde se podrán reforzar todas esas habilidades que desees mejorar; a continuación te mostramos algunas de ellas; también puedes proponernos un tema de interés sobre el que quisieras reforzar o mejorar; para ello te pedimos diligencies el formulario que encontrarás a continuación.</p>
                 </section>
             </div>
-            <div class="6u 12u(mobile)">
+            <div class="6u 12u(mobile)" ng-repeat="service in services">
                 <section>
                     <header class="style1">
-                        <h3>COMO CREAR TU PROPIA HOJA DE VIDA</h3>
+                        <h3>{{service.title}}</h3>
                     </header>
-                    <p class="style2" align="center">Abordaremos temas como estructura, pros y contras; características, anexos entre otros.</p>
-                </section>
-            </div>
-            <div class="6u 12u(mobile)">
-                <section>
-                    <header class="style1">
-                        <h3>PREPARACIÓN PARA UNA ENTREVISTA DE TRABAJO</h3>
-                    </header>
-                    <p class="style2" align="center">Trabajaremos el lenguaje verbal y no-verbal, manejo de estrés, Relajación Muscular, Visual y Entrenamiento en parada y cambio de pensamiento, entre otros.</p>
+                    <p class="style2" align="center">{{service.content}}</p>
+                    <div style="text-align: center;"><a href="" data-toggle="modal" data-target="#modalService" class="button style1">Solicitar</a></div>
                 </section>
             </div>
             <div class="12u">
@@ -183,4 +176,25 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
