@@ -325,6 +325,23 @@ iframe a {
 .inputs {
     margin-bottom: 5px;
 }
+
+.closeModal {
+    width: 50%;
+    background: #a52a2acf url(images/overlay.png) !important;
+}
+
+.closeModal:hover {
+    background: #a52a2aad url(images/overlay.png) !important;
+}
+
+.takeService {
+    width: 50%;
+}
+
+#logo img{
+    width: 150px;
+}
 /*        */
 
 

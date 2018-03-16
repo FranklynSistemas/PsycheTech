@@ -1,6 +1,6 @@
 app.controller('servicesCtrl', function($scope, $http, $routeParams) {
   $scope.serviceName = $routeParams.serviceName
-
+  $scope.formService = {}
   var url = '/getServices?live=true&type=' + $scope.serviceName
   $scope.services = []
 
@@ -9,7 +9,20 @@ app.controller('servicesCtrl', function($scope, $http, $routeParams) {
     .then(function(result) {
       if (result.data.status) {
         $scope.services = result.data.services
-        console.log("$scope.services", $scope.services)
+      }
+    }, function(err) {
+
+    })
+  }
+
+  $scope.getService =  function (serviceId) {
+    $('#btnTakeService').button('loading')
+    $http.get(url + '&_id=' + serviceId)
+    .then(function(result) {
+      if (result.data.status) {
+        $scope.service = result.data.services[0]
+        $('#modalService').modal('show')
+        $('#btnTakeService').button('reset')
       }
     }, function(err) {
 
@@ -22,16 +35,21 @@ app.controller('servicesCtrl', function($scope, $http, $routeParams) {
       typeVideoCall: '0',
       availability: '0'
     }
+    $scope.formService = {}
     getServices()
   }
 
   init()
 
-  $scope.sendFrom = function(form) {
+  $scope.sendFrom = function(form, isSpecific) {
     const url = '/createContact'
 
     if (!angular.equals(form, {})) {
-      form.type = $scope.serviceName
+      form.type = $scope.serviceName 
+      if(isSpecific) {
+        form.topic = $scope.service.title
+      }
+      
       $http.post(url, form)
         .then(function(result) {
           swal(
@@ -39,6 +57,7 @@ app.controller('servicesCtrl', function($scope, $http, $routeParams) {
             'Nos pondremos en contácto contigo lo más rapído posible!',
             'success'
           )
+          $('#modalService').modal('hide')
           init()
         }, function(err) {
           swal(
@@ -54,5 +73,9 @@ app.controller('servicesCtrl', function($scope, $http, $routeParams) {
         'error'
       )
     }
+  }
+
+  $scope.closeModal = function() {
+   $('#modalService').modal('hide')
   }
 })

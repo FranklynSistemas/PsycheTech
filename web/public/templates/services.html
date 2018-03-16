@@ -17,7 +17,7 @@
                         <h3>{{service.title}}</h3>
                     </header>
                     <p class="style2" align="center">{{service.content}}</p>
-                    <div style="text-align: center;"><a href="" data-toggle="modal" data-target="#modalService" class="button style1">Solicitar</a></div>
+                    <div style="text-align: center;"><a href="" id="btnTakeService" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Solicitar" ng-click='getService(service._id)' class="button style1">Solicitar</a></div>
                 </section>
             </div>
             <div class="12u">
@@ -70,7 +70,7 @@
                     </div>
                     <div class="row" style="margin-top: 0px;">
                         <div class="12u" style="text-align: center;">
-                            <input type="submit" style="width: 80%;" ng-click="sendFrom(form)" class="style1" value="Solicitar" />
+                            <button id="btnSendForm" type="submit" style="width: 80%;" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Solicitar" ng-click="sendFrom(form)" class="style1" /> Solicitar </button>
                         </div>
                     </div>
                 </form>
@@ -91,20 +91,13 @@
                     <p align="justify">Entendemos que cada población académica o laboral tienen necesidades diferentes, es por ello que ofrecemos talleres dinámicos por vídeo llamada o presencial; donde se podrán reforzar las habilidades para cada grupo de trabajo; laboral, estudiantes de primaria, bachilleres o Universitarios; a continuación te mostramos algunas de ellas; también puedes proponernos un tema de interés sobre los que te interesaría tratar con tu grupo.</p>
                 </section>
             </div>
-            <div class="6u 12u(mobile)">
+            <div class="6u 12u(mobile)" ng-repeat="service in services">
                 <section>
                     <header class="style1">
-                        <h3>COMO CREAR TU PROPIA HOJA DE VIDA</h3>
+                        <h3>{{service.title}}</h3>
                     </header>
-                    <p class="style2" align="center">Abordaremos temas como estructura, pros y contras; características, anexos entre otros.</p>
-                </section>
-            </div>
-            <div class="6u 12u(mobile)">
-                <section>
-                    <header class="style1">
-                        <h3>PREPARACIÓN PARA UNA ENTREVISTA DE TRABAJO</h3>
-                    </header>
-                    <p class="style2" align="center">Trabajaremos el lenguaje verbal y no-verbal, manejo de estrés, Relajación Muscular, Visual y Entrenamiento en parada y cambio de pensamiento, entre otros.</p>
+                    <p class="style2" align="center">{{service.content}}</p>
+                    <div style="text-align: center;"><a href="" ng-click='getService(service._id)' class="button style1">Solicitar</a></div>
                 </section>
             </div>
             <div class="12u">
@@ -138,7 +131,7 @@
                         </div>
                     </div>
                     <h3>Datos taller a solicitar</h3>
-                     <div class="row">
+                    <div class="row">
                         <div class="12u 12u(mobile)">
                             <input class="form-control inputs" type="text" ng-model="form.topic" placeholder="Tema del taller" required />
                         </div>
@@ -177,24 +170,62 @@
         </div>
     </div>
 </div>
-
 <!-- Modal -->
-<div class="modal fade" id="modalService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<div class="modal fade" id="modalService" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h1 align="center">{{service.title}}</h1>
+                <form>
+                    <div class="form-group" ng-if="serviceName === 'empresas-e-instituciones'">
+                        <label for="recipient-name" class="col-form-label">Nombre Entidad o Empresa:</label>
+                        <input type="text" ng-model="formService.nameEntity" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Nombre Completo:</label>
+                        <input type="text" ng-model="formService.name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Correo:</label>
+                        <input type="email" ng-model="formService.email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Celular:</label>
+                        <input class="form-control inputs" type="number" ng-model="formService.phone" required />
+                    </div>
+                    <div class="form-group" ng-if="serviceName === 'empresas-e-instituciones'">
+                        <label for="recipient-name" class="col-form-label">Cargo:</label>
+                        <input type="text" ng-model="formService.ocupation" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Disponibilidad:</label>
+                        <select class="form-control inputs" ng-model="formService.availability" required>
+                            <option value="1">1 Hora</option>
+                            <option value="2">2 Horas</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Medio preferido:</label>
+                        <select class="form-control inputs" ng-model="formService.typeVideoCall" required>
+                            <option value="1">Skype</option>
+                            <option value="2">hangouts</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Fecha tentativa:</label>
+                        <input class="form-control inputs" type="date" ng-model="formService.date" placeholder="Fecha" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Hora tentativa:</label>
+                        <input class="form-control inputs" type="time" ng-model="formService.time" placeholder="Hora" required />
+                    </div>
+                </form>
+                <span> <b>Costo del servicio: </b> {{service.price | currency:"$":0}} por hora de taller</span>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" ng-click="closeModal(formService)" class="style1 closeModal" value="Cancelar" />
+                <input type="submit" ng-click="sendFrom(formService, true)" class="style1 takeService" value="Solicitar" />
+            </div>
+        </div>
     </div>
-  </div>
 </div>
