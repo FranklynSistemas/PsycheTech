@@ -219,12 +219,12 @@
                         <label for="message-text" class="col-form-label">Hora tentativa:</label>
                         <input class="form-control inputs" type="time" ng-model="formService.time" placeholder="Hora" required />
                     </div>
+                    <span> <b>Costo del servicio: </b> {{service.price | currency:"$":0}} por hora de taller</span>
+                    <div class="modal-footer">
+                        <input type="submit" ng-click="closeModal(formService)" class="style1 closeModal" value="Cancelar" />
+                        <input type="submit" ng-click="sendFrom(formService, true)" class="style1 takeService" value="Solicitar" />
+                    </div>
                 </form>
-                <span> <b>Costo del servicio: </b> {{service.price | currency:"$":0}} por hora de taller</span>
-            </div>
-            <div class="modal-footer">
-                <input type="submit" ng-click="closeModal(formService)" class="style1 closeModal" value="Cancelar" />
-                <input type="submit" ng-click="sendFrom(formService, true)" class="style1 takeService" value="Solicitar" />
             </div>
         </div>
     </div>

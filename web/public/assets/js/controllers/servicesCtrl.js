@@ -43,13 +43,21 @@ app.controller('servicesCtrl', function($scope, $http, $routeParams) {
 
   $scope.sendFrom = function(form, isSpecific) {
     const url = '/createContact'
+    var finalForm
+
+    if (!isSpecific) {
+      finalForm = JSON.parse(JSON.stringify(form))
+      delete form.typeVideoCall
+      delete form.availability
+    }
 
     if (!angular.equals(form, {})) {
       form.type = $scope.serviceName 
       if(isSpecific) {
         form.topic = $scope.service.title
+      } else {
+        form = finalForm 
       }
-      
       $http.post(url, form)
         .then(function(result) {
           swal(
@@ -67,6 +75,9 @@ app.controller('servicesCtrl', function($scope, $http, $routeParams) {
           )
         })
     } else {
+      if (!isSpecific) {
+        $scope.form = finalForm
+      }
       swal(
         'Opss!',
         'Debes llenar todos los campos ;) ',
