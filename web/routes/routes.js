@@ -8,6 +8,7 @@ const articles = require('../controllers/articles')
 const qualifications = require('../controllers/qualifications')
 const logs = require('../controllers/logs')
 const services = require('../controllers/services')
+const subscribers = require('../controllers/subscribers')
 
 function authenticationMiddleware () {
   return function (req, res, next) {
@@ -17,6 +18,11 @@ function authenticationMiddleware () {
     res.redirect('/administrator/login')
   }
 }
+
+//Routes Subscribers
+router.post('/createSubscriber', subscribers.createSubscriber)
+router.get('/getSubscribers', subscribers.getSubscribers)
+router.put('/updateSubscribers', subscribers.editSubscribers)
 
 // Routes Logs
 router.post('/createLog', logs.createLog)

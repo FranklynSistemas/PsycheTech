@@ -342,6 +342,21 @@ iframe a {
 #logo img{
     width: 150px;
 }
+
+#blogProgressBar {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    bottom: 0;
+    height: 10px;
+}
+
+#btnSubscribers {
+    bottom: 5px;
+    right: 5px;
+    position: absolute;
+}
+
 /*        */
 
 
@@ -450,6 +465,12 @@ iframe a {
 
     .featured {
         width: 100% !important;
+    }
+    
+    #btnSubscribers {
+        width: 45%;
+        top: 5px;
+        bottom: auto;
     }
 }
 

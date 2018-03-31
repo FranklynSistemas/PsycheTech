@@ -1,7 +1,9 @@
 <script>
   fbq('track', 'ViewContent');
 </script>
-
+<div id="blogProgressBar" class="progress">
+  <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{valueProgessVar}}%;" aria-valuenow="{{valueProgessVar}}"  aria-valuemin="0" aria-valuemax="100"></div>
+</div>
 <div class="wrapper style2">
     <div class="title">PsychéTech</div>
     <div id="main" class="container">
@@ -13,7 +15,7 @@
                 <!-- Content -->
                 <div id="content" style="padding-right: 40px; padding-left: 40px;">
                     <div ng-if="!status.response" class="loader"></div>
-                    <div ng-if="!status.err" compile="article.content"></div>
+                    <div id="contentArticle" scroll-directive="" ng-if="!status.err" compile="article.content"></div>
                     <div ng-if="status.err">
                         <p align="justify" style="color: #f27474">Ups! no hemos podido encontrar el blog que estas buscando, siempre puedes escribirnos en nuestro formulario de contacto</p>
                     </div>

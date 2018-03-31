@@ -142,4 +142,60 @@ app.controller('startCtrl', function ($scope, $rootScope, $location, $http) {
     document.body.scrollTop = 0 // For Safari
     document.documentElement.scrollTop = 0 // For Chrome, Firefox, IE and Opera
   }
+
+  function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  $scope.openForm = () => {
+    swal({
+      title: 'Recibe a tu correo la mejor información sobre psicología y tecnología',
+      input: 'email',
+      showCancelButton: true,
+      confirmButtonColor: '#ffb150',
+      confirmButtonText: 'Enviar',
+      cancelButtonText: 'Cancelar',
+      showLoaderOnConfirm: true,
+      preConfirm: (email) => {
+        return new Promise((resolve) => {
+          resolve();
+        })
+      },
+      allowOutsideClick: () => !swal.isLoading()
+    }).then((result) => {
+      if (result.value) {
+        createSubcriber(result.value)
+      }
+    })
+  }
+
+  function createSubcriber(email){
+    const url = '/createSubscriber'
+    $http.post(url, {email: email})
+      .then(function (result) {
+        if(result.data.status) {
+          showAlert({
+            type: 'success',
+            title: '! Bien ¡',
+            msg: 'Ahora podrás saber cuando subimos nuestros nuevos blogs y muchas cosas màs  :D'
+          })
+        } else {
+          showAlert({
+            type: 'error',
+            title: '! Ups ¡',
+            msg: 'Ocurrio algo mientras enviando tu correo :( prueba de nuevo'
+          })
+        }
+        
+      })
+  }
+
+  function showAlert(data) {
+    swal({
+          type: data.type,
+          title: data.title,
+          html: data.msg
+        })
+  }
 })
