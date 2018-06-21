@@ -57,9 +57,10 @@ router.get('/administrator', authenticationMiddleware(), (req, res, next) => {
   res.sendFile(path.resolve('./public/administrator.html'))
 })
 
-// Angular handler of Frontend
-router.get('/', function (req, res) {
-  res.sendFile('../public/index.html')
+router.get('/sitemap.xml', (req, res) => {
+  res.set('Content-Type', 'application/rss+xml')
+  res.send('sitemap')
 })
+
 
 module.exports = router

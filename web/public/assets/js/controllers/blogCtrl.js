@@ -1,6 +1,6 @@
 app.controller('blogCtrl', function($scope, $http) {
 
-  var url = '/getArticles?categorie=blog&live=true';
+  var url = 'http://ec2-18-206-244-124.compute-1.amazonaws.com/getArticles?categorie=blog&live=true';
   $scope.articles = [];
 
   $http.get(url)

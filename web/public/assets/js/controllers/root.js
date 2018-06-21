@@ -3,7 +3,7 @@ app.controller('rootController', function($scope, $rootScope, $http) {
   $rootScope.isAuth = false;
   $scope.sendFrom = function(form) {
 
-    const url = '/createContact';
+    const url = 'http://ec2-18-206-244-124.compute-1.amazonaws.com/createContact';
 
     if (!angular.equals(form, {})) {
       $http.post(url, form)

@@ -1,7 +1,7 @@
 app.controller('servicesCtrl', function($scope, $http, $routeParams) {
   $scope.serviceName = $routeParams.serviceName
   $scope.formService = {}
-  var url = '/getServices?live=true&type=' + $scope.serviceName
+  var url = 'http://ec2-18-206-244-124.compute-1.amazonaws.com/getServices?live=true&type=' + $scope.serviceName
   $scope.services = []
 
   function getServices() {
@@ -42,7 +42,7 @@ app.controller('servicesCtrl', function($scope, $http, $routeParams) {
   init()
 
   $scope.sendFrom = function(form, isSpecific) {
-    const url = '/createContact'
+    const url = 'http://ec2-18-206-244-124.compute-1.amazonaws.com/createContact'
     var finalForm
 
     if (!isSpecific) {

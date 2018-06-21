@@ -1,6 +1,6 @@
 var app = angular.module('PsycheTech', ['ngRoute'])
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'templates/home.html'
@@ -23,6 +23,11 @@ app.config(function ($routeProvider) {
     })
     .otherwise({
       redirectTo: '/'
+    })
+
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
     })
 })
 

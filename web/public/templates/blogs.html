@@ -9,7 +9,7 @@
     <div id="main" class="container">
         <div class="row 150%">
             <div class="12u" style="text-align: center;">
-                <a href="#/blog" class="button style4 big">Ver todos nuestros blogs</a>
+                <a href="blog" class="button style4 big">Ver todos nuestros blogs</a>
             </div>
             <div class="8u 12u(mobile) important(mobile)">
                 <!-- Content -->
@@ -40,7 +40,7 @@
                 <div id="sidebar">
                     <div ng-repeat="article in articles | orderBy: '-bost'">
                         <div compile="article.shortView.content"></div>
-                        <div style="text-align: center;"><a href="#/blogs/{{article.name}}" class="button style1">Leer Más</a></div>
+                        <div style="text-align: center;"><a href="blogs/{{article.name}}" class="button style1">Leer Más</a></div>
                         <br>
                     </div>
                 </div>
