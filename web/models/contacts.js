@@ -11,6 +11,9 @@ const ContactsSchema = new Schema({
   name: {
     type: String
   },
+  motive: {
+    type: String
+  },
   createAt: {
     type: Date,
     default: Date.now()

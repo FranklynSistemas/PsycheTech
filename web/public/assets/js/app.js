@@ -1,34 +1,68 @@
-var app = angular.module('PsycheTech', ['ngRoute'])
+var app = angular.module('PsycheTech', ['ngRoute', 'ui.router', 'ncy-angular-breadcrumb'])
 
-app.config(function ($routeProvider, $locationProvider) {
-  $routeProvider
-    .when('/', {
-      templateUrl: 'templates/home.html'
-    })
-    .when('/blog', {
-      templateUrl: 'templates/blog.html',
-      controller: 'blogCtrl'
-    })
-    .when('/blogs/:name', {
-      templateUrl: 'templates/blogs.html',
-      controller: 'blogsCtrl'
-    })
-    .when('/servicios/:serviceName', {
-      templateUrl: 'templates/services.html',
-      controller: 'servicesCtrl'
-    })
-    .when('/sobre-nosotros', {
-      templateUrl: 'templates/aboutus.html',
-      controller: 'aboutCtrl'
-    })
-    .otherwise({
-      redirectTo: '/'
-    })
+app.config(function ($routeProvider, $stateProvider, $locationProvider) {
+  
+  var home = {
+    url: '/',
+    name: 'home',
+    templateUrl: 'templates/home.html',
+    ncyBreadcrumb: {
+      label: 'Home page'
+    }
+  }
 
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-    })
+  var blogs = {
+    url: '/blog',
+    name: 'blogs',
+    templateUrl: 'templates/blog.html',
+    controller: 'blogCtrl',
+    ncyBreadcrumb: {
+      label: 'Blogs'
+    }
+  }
+
+  var blog = {
+    url: '/blogs/{name}',
+    name: 'blog',
+    templateUrl: 'templates/blogs.html',
+    controller: 'blogsCtrl',
+    ncyBreadcrumb: {
+      label: 'Blog'
+    }
+  }
+
+  var servicios = {
+    url: '/servicios/{serviceName}',
+    name: 'servicios',
+    templateUrl: 'templates/services.html',
+    controller: 'servicesCtrl',
+    ncyBreadcrumb: {
+      label: 'Servicios'
+    }
+  }
+
+  var sobreNosotros = {
+    url: '/sobre-nosotros',
+    name: 'sobreNosotros',
+    templateUrl: 'templates/aboutus.html',
+    controller: 'aboutCtrl',
+    ncyBreadcrumb: {
+      label: 'Sobre Nosotros'
+    }
+  }
+
+
+  $stateProvider.state(home);
+  $stateProvider.state(blogs);
+  $stateProvider.state(blog);
+  $stateProvider.state(servicios);
+  $stateProvider.state(sobreNosotros);
+
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  })
+
 })
 
 app.controller('startCtrl', function ($scope, $rootScope, $location, $http) {
@@ -37,7 +71,7 @@ app.controller('startCtrl', function ($scope, $rootScope, $location, $http) {
   $scope.baseText = 'Aquí podrás encontrar novedades y grandes curiosidades sobre ' +
     'psicología y tecnología, encuentra todo lo que no sabías y lo que te estás perdiendo.'
 
-  $rootScope.baseUrl = 'http://psychetech.co/#'
+  $rootScope.baseUrl = 'https://psychetech.co/'
 
   $scope.$on('$viewContentLoaded', function () {
     var location = $location.path().split('/')

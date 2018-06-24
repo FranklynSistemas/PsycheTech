@@ -1,9 +1,10 @@
 app.controller('rootController', function($scope, $rootScope, $http) {
   $scope.form = {}
   $rootScope.isAuth = false;
+  const baseUrl = 'https://api.psychetech.co'
   $scope.sendFrom = function(form) {
 
-    const url = 'http://ec2-18-206-244-124.compute-1.amazonaws.com/createContact';
+    const url = baseUrl + '/createContact';
 
     if (!angular.equals(form, {})) {
       $http.post(url, form)

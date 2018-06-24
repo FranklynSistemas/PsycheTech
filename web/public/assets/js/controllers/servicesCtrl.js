@@ -1,11 +1,13 @@
-app.controller('servicesCtrl', function($scope, $http, $routeParams) {
-  $scope.serviceName = $routeParams.serviceName
+app.controller('servicesCtrl', function($scope, $http, $transition$) {
+  $scope.serviceName = $transition$.params().serviceName
   $scope.formService = {}
-  var url = 'http://ec2-18-206-244-124.compute-1.amazonaws.com/getServices?live=true&type=' + $scope.serviceName
+  var baseUrl = 'https://api.psychetech.co'
+  var servicesUrl = baseUrl + '/getServices?live=true&type=' + $scope.serviceName
+  
   $scope.services = []
 
   function getServices() {
-    $http.get(url)
+    $http.get(servicesUrl)
     .then(function(result) {
       if (result.data.status) {
         $scope.services = result.data.services
@@ -17,7 +19,7 @@ app.controller('servicesCtrl', function($scope, $http, $routeParams) {
 
   $scope.getService =  function (serviceId) {
     $('#btnTakeService').button('loading')
-    $http.get(url + '&_id=' + serviceId)
+    $http.get(servicesUrl + '&_id=' + serviceId)
     .then(function(result) {
       if (result.data.status) {
         $scope.service = result.data.services[0]
@@ -42,7 +44,7 @@ app.controller('servicesCtrl', function($scope, $http, $routeParams) {
   init()
 
   $scope.sendFrom = function(form, isSpecific) {
-    const url = 'http://ec2-18-206-244-124.compute-1.amazonaws.com/createContact'
+    const url = baseUrl + '/createContact'
     var finalForm
 
     if (!isSpecific) {

@@ -9,8 +9,13 @@
         <script>
           fbq('track', 'Search');
         </script>
-
-        <div class="row row 150%">
+        <div class="row row 150%" ng-if="loading" >
+            <div style="margin: 0 auto">
+                <div class="loader"></div>
+                <h3 style="text-align: center"> Cargando blogs ...</h3>
+            </div>
+        </div>
+        <div class="row row 150%" ng-if="!loading">
             <div class="4u 12u(mobile)" ng-repeat="article in articles | orderBy: '-bost' | filter:filterBlog ">
                 <div compile="article.shortView.content"></div>
                 <div class="qualification">

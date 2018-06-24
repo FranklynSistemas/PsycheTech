@@ -15,7 +15,7 @@
     <!-- Start SEO Metadata -->
     <title>PsychéTech</title>
     <meta name="description" content="Aquí podrás encontrar novedades y grandes curiosidades sobre psicología y tecnología, encuentra todo lo que no sabías y lo que te estás perdiendo.">
-    <link rel="canonical" href="https://www.psychetech.co">
+    <link rel="canonical" href="https://psychetech.co">
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <!-- End SEO Metadata -->
@@ -33,7 +33,7 @@
     <meta property="fb:app_id" content="293935774467795">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Psyché Tech">
-    <meta property="og:url" content="https://www.psychetech.co">
+    <meta property="og:url" content="https://psychetech.co">
     <meta property="og:image" content="https://pbs.twimg.com/profile_banners/956708819983364096/1521171064/1500x500">
     <meta property="og:image:height" content="500">
     <meta property="og:image:width" content="1500">
@@ -98,6 +98,7 @@
 </head>
 
 <body class="homepage" ng-controller="startCtrl">
+    <div ncy-breadcrumb></div>
     <div id="page-wrapper">
         <!-- Header -->
         <div id="header-wrapper" class="wrapper">
@@ -107,7 +108,7 @@
                     <img src="images/icon.png">
                     <h1><a class="namePage" href="/">PsychéTech</a></h1>
                     <p>Psicología y Tecnología lo que no sabías</p>
-                    <div class="fb-like" data-href="http://psychetech.co" data-layout="button_count" data-action="recommend" data-size="small" data-show-faces="true" data-share="true"></div>
+                    <div class="fb-like" data-href="https://psychetech.co" data-layout="button_count" data-action="recommend" data-size="small" data-show-faces="true" data-share="true"></div>
 
                 </div>
                 <!-- Nav -->
@@ -120,6 +121,9 @@
                         <li>
                             <a href="">Servicios</a>
                             <ul>
+                                <li><a href="servicios/app">Aplicaciónes Móviles</a></li>
+                                <li><a href="servicios/web">Paginas Web</a></li>
+                                <li><a href="servicios/video">Video Interactivo</a></li>
                                 <li><a href="servicios/personas">Personas</a></li>
                                 <li><a href="servicios/empresas-e-instituciones">Empresas e instituciones</a></li>
                             </ul>
@@ -133,7 +137,7 @@
             </div>
         </div>
         <!-- Body -->
-        <div ng-view></div>
+        <ui-view></ui-view>
         <div id="fb-root"></div>
         <!-- Footer -->
         <div id="footer-wrapper" class="wrapper" ng-controller="rootController">
@@ -228,6 +232,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+<script src="assets/js/angular-breadcrumb.min.js"></script>
 <script src="assets/js/app.js"></script>
 <script src="assets/js/controllers/root.js"></script>
 <script src="assets/js/controllers/blogCtrl.js"></script>

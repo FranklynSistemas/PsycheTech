@@ -1583,7 +1583,9 @@ table.default tfoot {
     background: #eee;
 }
 
-
+.breadcrumb {
+    display: none !important;
+}
 
 /* Form */
 

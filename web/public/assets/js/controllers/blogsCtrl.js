@@ -1,9 +1,10 @@
-app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $timeout, $http) {
+app.controller('blogsCtrl', function($scope, $rootScope, $transition$, $timeout, $http) {
 
   var giveLike = false;
-  var articleName = $routeParams.name;
-  $scope.share = 'http://psychetech.co/blogs/' + articleName;
-  var url = 'http://ec2-18-206-244-124.compute-1.amazonaws.com/getArticles?name=' + articleName;
+  var articleName = $transition$.params().name;
+  $scope.share = 'https://psychetech.co/blogs/' + articleName;
+  const baseUrl = 'https://api.psychetech.co'
+  var url = baseUrl + '/getArticles?name=' + articleName;
   $scope.article = {};
   $scope.status = {
     response: false,
@@ -47,7 +48,7 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $timeout,
   }
 
   function getArticles() {
-    var allArticles = 'http://ec2-18-206-244-124.compute-1.amazonaws.com/getArticles?categorie=blog&live=true';
+    var allArticles = baseUrl + '/getArticles?categorie=blog&live=true';
     if ($scope.article.relations) {
       allArticles += '&relations=' + $scope.article.relations;
     }
@@ -105,7 +106,7 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $timeout,
   }
 
   function updateQualification(update) {
-    var url = 'http://ec2-18-206-244-124.compute-1.amazonaws.com/updateQualification';
+    const url = baseUrl + '/updateQualification';
     $http.put(url, update).
     then(function(result) {
       $scope.quali.comment = "";
@@ -159,7 +160,6 @@ app.controller('blogsCtrl', function($scope, $rootScope, $routeParams, $timeout,
       } else {
         $rootScope.isAuth = false;
       }
-
     });
   }
 
