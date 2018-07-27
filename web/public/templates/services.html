@@ -275,6 +275,106 @@
             </div>
         </div>
     </div>
+<!--Flayer-->
+<div class="wrapper style2" ng-if="serviceName === 'flayer'">
+    <div class="title">Aplicaciónes moviles</div>
+    <div id="main" class="container">
+        <a href="#" class="image banner">
+            <img src="images/flayer.jpg" alt="" />
+        </a>
+        <div class="row" style="width: 90%; margin: 0 auto;">
+            <div class="12u 12u(mobile)">
+                <section>
+                    <p align="justify">Los Flyers es la forma de obtener Publicidad al instante, las imágenes dicen más que mil palabras, es por ello que nosotros haremos realidad tus ideas, fácil y rápido podrás ganar muchos seguidores con imágenes únicas y acordes a tus necesidades.
+                        <br>
+                        <br>
+                        Nostotros hacemos realidad tus ideas
+                    </p>
+                </section>
+            </div>
+            <div class="6u 12u(mobile)" ng-repeat="service in services">
+                <section>
+                    <header class="style1">
+                        <h3>{{service.title}}</h3>
+                    </header>
+                    <p class="style2" align="center">{{service.content}}</p>
+                    <div style="text-align: center;"><a href="" ng-click='getService(service._id)' class="button style1">Solicitar</a></div>
+                </section>
+            </div>
+            <div class="12u">
+                <header class="style1">
+                    <h2>Solicita tu flayer</h2>
+                    <p>
+                        Llena el siguiente formulario y te contactáremos en un 2x3!
+                    </p>
+                </header>
+                <form>
+                    <h3>Datos persona de contacto</h3>
+                    <div class="row 50%">
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="text" ng-model="form.name" placeholder="Nombre Completo" required />
+                        </div>
+                        <div class="6u 12u(mobile)">
+                            <input class="form-control inputs" type="text" ng-model="form.email" placeholder="Correo" required />
+                        </div>
+                    </div>
+                    <div class="row 50%">
+                        <div class="12u 12u(mobile)">
+                            <input class="form-control inputs" type="number" ng-model="form.phone" placeholder="Celular" required />
+                        </div>
+                    </div>
+                    <h3>Información general de la aplicación a solicitar</h3>
+                    <div class="row">
+                            <div class="6u 12u(mobile)">
+                                <label for="">Motivo</label>
+                                <select class="form-control inputs" ng-model="form.motive" required>
+                                    <option value="Laboral">Laboral</option>
+                                    <option value="Académico">Académico</option>
+                                    <option value="Personal">Personal</option>
+                                    <option value="Personal">Social</option>
+                                </select>
+                            </div>
+                            <div class="6u 12u(mobile)">
+                                <label for="">Tipo</label>
+                                <select class="form-control inputs" ng-model="form.topic" required>
+                                    <option value="Informativo">Informativo</option>
+                                    <option value="Interactivo">Interactivo</option>
+                                    <option value="Juegos">Juegos</option>
+                                    <option value="Aprendizaje">Aprendizaje</option>
+                                </select>
+                            </div>
+                            <div class="6u 12u(mobile)">
+                                <label for="">Tiempo de entrega estimado</label>
+                                <select class="form-control inputs" ng-model="form.time" required>
+                                    <option value="4">4 Semanas</option>
+                                    <option value="5">5 Semanas</option>
+                                    <option value="6">6 Semanas</option>
+                                    <option value="7">7 Semanas</option>
+                                    <option value="8">8 Semanas</option>
+                                    <option value="9">9 Semanas</option>
+                                    <option value="10">10 Semanas</option>
+                                    <option value="11">11 Semanas</option>
+                                    <option value="12">12 Semanas</option>
+                                </select>
+                            </div>
+                            <div class="6u 12u(mobile)">
+                                <label for="">Contenido</label>                                    
+                                <select class="form-control inputs" ng-model="form.message" required>
+                                    <option value="Suministrado por el cliente">Suministrado por el cliente</option>
+                                    <option value="Suministrado por Psychétech">Suministrado por Psychétech</option>
+                                </select>
+                            </div>
+                        </div>
+                    <div class="row" style="margin-top: 0px;">
+                        <div class="12u" style="text-align: center;">
+                            <input type="submit" style="width: 80%;" ng-click="sendFrom(form)" class="style1" value="Solicitar" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Web -->
 <div class="wrapper style2" ng-if="serviceName === 'web'">
         <div class="title">Páginas Web</div>
